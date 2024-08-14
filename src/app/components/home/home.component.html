@@ -1,0 +1,17 @@
+<div class="container my-5">
+    <div class="row gy-4">
+        @for (product of allProducts; track $index) {
+            <div class="col-md-3 cursor-pointer">
+                <div class="product h-100">
+                    <img class="w-100" [src]="product.imageCover" alt="Product Image">
+                    <h2 class="text-center">{{ product.title.split(" ").slice(0,3).join(" ") }}</h2>
+                    <div class="d-flex justify-content-around">
+                        <span>{{product.price}} EGP</span>
+                        <span>{{product.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></span>
+                    </div>
+                    <button class="btn w-100 bg-main mt-3">Add To Cart</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
