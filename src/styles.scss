@@ -64,3 +64,8 @@ a:hover {
 .bg-main-light {
   background-color: var(--light-color) !important;
 }
+
+.form-control:focus{
+  box-shadow: 0 0 0 0.15rem var(--main-color);
+  
+}
