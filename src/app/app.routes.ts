@@ -16,21 +16,21 @@ export const routes: Routes = [
         path: "", component: AuthLayoutComponent,
         children: [
             { path: "", redirectTo: "signin", pathMatch: "full" },
-            { path: "signin", component: SigninComponent },
-            { path: "signup", component: SignupComponent }
+            { path: "signin", component: SigninComponent ,title:"SignIn" },
+            { path: "signup", component: SignupComponent ,title:"SignUp" }
         ]
     },
     {
         path: "", component: MainLayoutComponent,
         children: [
-            { path: "home", component: HomeComponent },
-            { path: "products", component: ProductsComponent },
-            { path: "categories", component: CategoriesComponent },
-            { path: "brands", component: BrandsComponent },
-            { path: "cart", component: CartComponent },
-            { path: "orders", component: OrdersComponent },
+            { path: "home", component: HomeComponent,title:"Home" },
+            { path: "products", component: ProductsComponent ,title:"Products" },
+            { path: "categories", component: CategoriesComponent ,title:"Categories" },
+            { path: "brands", component: BrandsComponent ,title:"Brands" },
+            { path: "cart", component: CartComponent ,title:"Cart" },
+            { path: "orders", component: OrdersComponent ,title:"Orders" },
         ]
     },
-    { path: "**", component: NotFoundComponent }
+    { path: "**", component: NotFoundComponent ,title:"NotFound 404!" }
 
 ];
