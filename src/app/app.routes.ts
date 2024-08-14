@@ -10,6 +10,7 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,7 @@ export const routes: Routes = [
             { path: "brands", component: BrandsComponent ,title:"Brands" },
             { path: "cart", component: CartComponent ,title:"Cart" },
             { path: "orders", component: OrdersComponent ,title:"Orders" },
+            {path:"wishlist",component:WishlistComponent,title:"WishList"},
         ]
     },
     { path: "**", component: NotFoundComponent ,title:"NotFound 404!" }
