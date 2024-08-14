@@ -1,1 +1,11 @@
-<p>brands works!</p>
+<section>
+    <div class="container">
+        <div class="row">
+            @for (brand of allBrands; track $index) {
+                <div class="col-md-3 cursor-pointer">
+                    <img [src]="brand.image" [alt]="brand.name">
+                </div>
+            }
+        </div>
+    </div>
+</section>
