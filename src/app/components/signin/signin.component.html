@@ -18,8 +18,15 @@
             </div>
 
             </div>
+            @if(erroMsg){
+                <p class="alert alert-danger m-0">{{erroMsg}}</p>
+            }
+            @if(loginmsgSuccess)
+            {
+                <p class="alert alert-success m-0">Login Success!</p>
+            }
             <div class="text-end">
-        <button [disabled]="loginForm.invalid" class="btn-main mt-3">Login
+        <button [disabled]="loginForm.invalid || isLoading" class="btn-main mt-3">Login
         @if(isLoading){
             <div class="spinner-border spinner-border-sm" role="status">
             <span class="visually-hidden">Loading...</span>

@@ -35,8 +35,8 @@
                 <div class="col-md-12">
                     <label for="rePassword" class="form-label">rePassword:</label>
                     <input [ngClass]="{
-                        'is-invalid': registerForm.hasError('missmatch') && registerForm.get('password')?.touched,
-                        'is-valid': !registerForm.hasError('missmatch') && !registerForm.get('password')?.errors  && registerForm.get('password')?.touched
+                        'is-invalid': registerForm.hasError('mismatch') && registerForm.get('password')?.touched,
+                        'is-valid': !registerForm.hasError('mismatch') && !registerForm.get('password')?.errors  && registerForm.get('password')?.touched
                     }" formControlName="rePassword" type="password" class="form-control" id="rePassword">
                     <app-form-input-msg [Form]="registerForm" FormControl="rePassword"></app-form-input-msg>
                 </div>

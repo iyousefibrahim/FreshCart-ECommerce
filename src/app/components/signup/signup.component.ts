@@ -54,7 +54,7 @@ export class SignupComponent {
       return null
     }
     else {
-      return { missmatch: true }
+      return { mismatch: true }
     }
   }
 
