@@ -1,37 +1,76 @@
-<section class="my-4">
-    <div class="container">
-        <div class="row gy-2">
-            <h4>Register Now :</h4>
+<section>
+    <div class="container my-5">
+        <h1>Register Now:</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="regsiterSubmit()">
 
-            <div class="col-md-12">
-                <label for="userName" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="userName">
+            <div class="row gy-2">
+
+                <div class="col-md-12">
+                    <label for="name" class="form-label">Name:</label>
+                    <input [ngClass]="{
+                        'is-invalid': registerForm.get('name')?.errors && registerForm.get('name')?.touched,
+                        'is-valid': !registerForm.get('name')?.errors && registerForm.get('name')?.touched
+                    }" formControlName="name" type="text" class="form-control" id="name">
+                    <app-form-input-msg [Form]="registerForm" FormControl="name"></app-form-input-msg>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="email" class="form-label">Email:</label>
+                    <input [ngClass]="{
+                        'is-invalid': registerForm.get('email')?.errors && registerForm.get('email')?.touched,
+                        'is-valid': !registerForm.get('email')?.errors && registerForm.get('email')?.touched
+                    }" formControlName="email" type="email" class="form-control" id="email">
+                    <app-form-input-msg [Form]="registerForm" FormControl="email"></app-form-input-msg>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="password" class="form-label">Password:</label>
+                    <input [ngClass]="{
+                        'is-invalid': registerForm.get('password')?.errors && registerForm.get('password')?.touched,
+                        'is-valid': !registerForm.get('password')?.errors && registerForm.get('password')?.touched
+                    }" formControlName="password" type="password" class="form-control" id="password">
+                    <app-form-input-msg [Form]="registerForm" FormControl="password"></app-form-input-msg>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="rePassword" class="form-label">rePassword:</label>
+                    <input [ngClass]="{
+                        'is-invalid': registerForm.hasError('missmatch') && registerForm.get('password')?.touched,
+                        'is-valid': !registerForm.hasError('missmatch') && !registerForm.get('password')?.errors  && registerForm.get('password')?.touched
+                    }" formControlName="rePassword" type="password" class="form-control" id="rePassword">
+                    <app-form-input-msg [Form]="registerForm" FormControl="rePassword"></app-form-input-msg>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="phone" class="form-label">Phone:</label>
+                    <input [ngClass]="{
+                        'is-invalid': registerForm.get('phone')?.errors && registerForm.get('phone')?.touched,
+                        'is-valid': !registerForm.get('phone')?.errors && registerForm.get('phone')?.touched
+                    }" formControlName="phone" type="text" class="form-control" id="phone">
+                    <app-form-input-msg [Form]="registerForm" FormControl="phone"></app-form-input-msg>
+                </div>
+
             </div>
 
-            <div class="col-md-12">
-                <label for="userEmail" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="userEmail">
+            @if(errorMsg){
+                <p class="alert alert-danger mt-3 m-0">{{errorMsg}}!</p>
+            }
+            @if(registermsgSuccess){
+                <p class="alert alert-success mt-3 m-0">Register Is Successful!</p>
+            }
+
+            <div class="text-end">
+                <button [disabled]="registerForm.invalid || isLoading" class="btn-main mt-3">Register
+                @if(isLoading){
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                }
+                </button>
             </div>
 
-            <div class="col-md-12">
-                <label for="userPassword" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="userPassword">
-            </div>
             
-            <div class="col-md-12">
-                <label for="userRePassword" class="form-label">RePassword:</label>
-                <input type="password" class="form-control" id="userRePassword">
-            </div>
 
-            <div class="col-md-12">
-                <label for="userPhone" class="form-label">Phone:</label>
-                <input type="tel" class="form-control" id="userPhone">
-            </div>
-
-        </div>
-
-        <div class="text-end mt-4">
-            <button class="btn bg-main">Register</button>
-        </div>
+        </form>
     </div>
 </section>

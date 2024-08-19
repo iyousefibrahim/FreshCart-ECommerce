@@ -13,6 +13,7 @@
 
 .navlink-active {
   background-color: var(--main-color);
+  color: white !important;
   border-radius: 10px;
 }
 
@@ -42,12 +43,12 @@ a:hover {
   border-radius: 10px;
   transition: 0.3s;
 }
-.product .btn {
+.product .btn-main {
   transition: transform 1s, opacity 1s;
   transform: translateY(100%);
   opacity: 0;
 }
-.product:hover .btn {
+.product:hover .btn-main {
   opacity: 1;
   transform: translateY(0%);
 }
@@ -68,4 +69,24 @@ a:hover {
 .form-control:focus{
   box-shadow: 0 0 0 0.15rem var(--main-color);
   
+}
+
+.btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+.btn-main:hover {
+  background-color: #11bd11;
 }

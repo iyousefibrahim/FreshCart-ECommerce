@@ -1,0 +1,24 @@
+@if(Form.get(FormControl)?.errors && Form.get(FormControl)?.touched){
+
+    @if(Form.get(FormControl)?.hasError('required') && Form.get(FormControl)?.touched){
+        <p class="alert alert-danger m-0 mt-2">Input Is Required!</p>
+    }
+    @else if(Form.get(FormControl)?.hasError('minlength') && Form.get(FormControl)?.touched){
+        <p class="alert alert-danger m-0 mt-2">Input Must Be Longer Than 3 Chars!</p>
+    }
+    @else if(Form.get(FormControl)?.hasError('maxlength') && Form.get(FormControl)?.touched){
+        <p class="alert alert-danger m-0 mt-2">Input Must Be Less Than 20 Chars!</p>
+    }
+    @else if(Form.get(FormControl)?.hasError('email') && Form.get(FormControl)?.touched){
+        <p class="alert alert-danger m-0 mt-2">Email Is Invalid!</p>
+    }
+    @else if(FormControl === 'password' && Form.get(FormControl)?.hasError('pattern') && Form.get(FormControl)?.touched){
+        <p class="alert alert-danger m-0 mt-2">Password Is Invalid!</p>
+    }
+    @else if(FormControl === 'phone' && Form.get(FormControl)?.hasError('pattern') && Form.get(FormControl)?.touched){
+        <p class="alert alert-danger m-0 mt-2">Phone Number Is Invalid!</p>
+    }
+}
+@else if(FormControl === 'rePassword' && Form.get(FormControl)?.touched && Form.hasError('missmatch')) {
+    <p class="alert alert-danger m-0 mt-2">Invalid rePassword</p>
+}

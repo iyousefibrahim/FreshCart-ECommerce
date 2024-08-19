@@ -2,23 +2,34 @@
     <div class="container"> 
         <h2>Login Now :</h2>
 
-        <div class="row my-3">
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+            <div class="row my-3">
         
             <div class="col-md-12">
             <label for="Email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="Email" placeholder="name@example.com">
+            <input formControlName="email" type="email" class="form-control" id="Email" placeholder="name@example.com">
+            <app-form-input-msg [Form]="loginForm" FormControl = "email"></app-form-input-msg>
             </div>
 
             <div class="col-md-12 mt-3">
             <label for="Password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="Password">
+            <input formControlName="password" type="password" class="form-control" id="Password">
+            <app-form-input-msg [Form]="loginForm" FormControl = "password"></app-form-input-msg>
             </div>
 
+            </div>
+            <div class="text-end">
+        <button [disabled]="loginForm.invalid" class="btn-main mt-3">Login
+        @if(isLoading){
+            <div class="spinner-border spinner-border-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        }
+        </button>
         </div>
+        </form>
 
-        <div class="text-end">
-        <button class="btn bg-main align-self-end">Login</button>
-        </div>
+        
 
     </div>
 </section>
