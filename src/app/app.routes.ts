@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -12,6 +13,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 
+
 export const routes: Routes = [
     {
         path: "", component: AuthLayoutComponent,
@@ -22,15 +24,16 @@ export const routes: Routes = [
         ]
     },
     {
-        path: "", component: MainLayoutComponent,
+        path: "", component: MainLayoutComponent , canActivate:[authGuard],
         children: [
+            { path: "", redirectTo: "home", pathMatch: "full" },
             { path: "home", component: HomeComponent,title:"Home" },
             { path: "products", component: ProductsComponent ,title:"Products" },
             { path: "categories", component: CategoriesComponent ,title:"Categories" },
             { path: "brands", component: BrandsComponent ,title:"Brands" },
             { path: "cart", component: CartComponent ,title:"Cart" },
             { path: "orders", component: OrdersComponent ,title:"Orders" },
-            {path:"wishlist",component:WishlistComponent,title:"WishList"},
+            {path:"wishlist",component:WishlistComponent,title:"WishList" },
         ]
     },
     { path: "**", component: NotFoundComponent ,title:"NotFound 404!" }
