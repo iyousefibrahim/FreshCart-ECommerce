@@ -2,13 +2,13 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-form-input-msg',
+  selector: 'app-alert-error',
   standalone: true,
   imports: [],
-  templateUrl: './form-input-msg.component.html',
-  styleUrl: './form-input-msg.component.scss'
+  templateUrl: './alert-error.component.html',
+  styleUrl: './alert-error.component.scss'
 })
-export class FormInputMsgComponent {
+export class AlertErrorComponent {
   @Input({required:true}) Form!:FormGroup;
   @Input({required:true}) FormControl!:any;
 }

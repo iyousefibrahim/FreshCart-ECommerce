@@ -8,13 +8,13 @@
             <div class="col-md-12">
             <label for="Email" class="form-label">Email:</label>
             <input formControlName="email" type="email" class="form-control" id="Email" placeholder="name@example.com">
-            <app-form-input-msg [Form]="loginForm" FormControl = "email"></app-form-input-msg>
+            <app-alert-error [Form]="loginForm" FormControl = "email"></app-alert-error>
             </div>
 
             <div class="col-md-12 mt-3">
             <label for="Password" class="form-label">Password:</label>
             <input formControlName="password" type="password" class="form-control" id="Password">
-            <app-form-input-msg [Form]="loginForm" FormControl = "password"></app-form-input-msg>
+            <app-alert-error [Form]="loginForm" FormControl = "password"></app-alert-error>
             </div>
 
             </div>

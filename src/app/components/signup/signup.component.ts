@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormInputMsgComponent } from "../../shared/ui components/form-input-msg/form-input-msg.component";
 import { NgClass } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { AlertErrorComponent } from '../../shared/ui components/alert-error/alert-error.component';
+import { confirmPassword } from '../../shared/utils/confirm-password.utils';
+import { signupValidator } from '../../shared/validators/register.validators';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, FormInputMsgComponent, NgClass],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -23,12 +25,12 @@ export class SignupComponent {
   isLoading: boolean = false;
 
   registerForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [Validators.required, Validators.pattern(/^\w{6,}$/)]),
+    name: new FormControl(null,signupValidator.name),
+    email: new FormControl(null,signupValidator.email),
+    password: new FormControl(null, signupValidator.password),
     rePassword: new FormControl(null),
-    phone: new FormControl(null, [Validators.required, Validators.pattern(/^01[0-1-2-5][0-9]{8}$/)])
-  }, this.confirmPassword);
+    phone: new FormControl(null, signupValidator.phone)
+  }, confirmPassword);
 
   regsiterSubmit() {
 
@@ -49,13 +51,6 @@ export class SignupComponent {
 
   }
 
-  confirmPassword(registerForm: AbstractControl) {
-    if (registerForm.get('password')?.value === registerForm.get('rePassword')?.value) {
-      return null
-    }
-    else {
-      return { mismatch: true }
-    }
-  }
+
 
 }

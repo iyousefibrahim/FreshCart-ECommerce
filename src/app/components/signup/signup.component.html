@@ -11,7 +11,7 @@
                         'is-invalid': registerForm.get('name')?.errors && registerForm.get('name')?.touched,
                         'is-valid': !registerForm.get('name')?.errors && registerForm.get('name')?.touched
                     }" formControlName="name" type="text" class="form-control" id="name">
-                    <app-form-input-msg [Form]="registerForm" FormControl="name"></app-form-input-msg>
+                    <app-alert-error [Form]="registerForm" FormControl="name"></app-alert-error>
                 </div>
 
                 <div class="col-md-12">
@@ -20,7 +20,7 @@
                         'is-invalid': registerForm.get('email')?.errors && registerForm.get('email')?.touched,
                         'is-valid': !registerForm.get('email')?.errors && registerForm.get('email')?.touched
                     }" formControlName="email" type="email" class="form-control" id="email">
-                    <app-form-input-msg [Form]="registerForm" FormControl="email"></app-form-input-msg>
+                    <app-alert-error [Form]="registerForm" FormControl="email"></app-alert-error>
                 </div>
 
                 <div class="col-md-12">
@@ -29,7 +29,7 @@
                         'is-invalid': registerForm.get('password')?.errors && registerForm.get('password')?.touched,
                         'is-valid': !registerForm.get('password')?.errors && registerForm.get('password')?.touched
                     }" formControlName="password" type="password" class="form-control" id="password">
-                    <app-form-input-msg [Form]="registerForm" FormControl="password"></app-form-input-msg>
+                    <app-alert-error [Form]="registerForm" FormControl="password"></app-alert-error>
                 </div>
 
                 <div class="col-md-12">
@@ -38,7 +38,7 @@
                         'is-invalid': registerForm.hasError('mismatch') && registerForm.get('password')?.touched,
                         'is-valid': !registerForm.hasError('mismatch') && !registerForm.get('password')?.errors  && registerForm.get('password')?.touched
                     }" formControlName="rePassword" type="password" class="form-control" id="rePassword">
-                    <app-form-input-msg [Form]="registerForm" FormControl="rePassword"></app-form-input-msg>
+                    <app-alert-error [Form]="registerForm" FormControl="rePassword"></app-alert-error>
                 </div>
 
                 <div class="col-md-12">
@@ -47,7 +47,7 @@
                         'is-invalid': registerForm.get('phone')?.errors && registerForm.get('phone')?.touched,
                         'is-valid': !registerForm.get('phone')?.errors && registerForm.get('phone')?.touched
                     }" formControlName="phone" type="text" class="form-control" id="phone">
-                    <app-form-input-msg [Form]="registerForm" FormControl="phone"></app-form-input-msg>
+                    <app-alert-error [Form]="registerForm" FormControl="phone"></app-alert-error>
                 </div>
 
             </div>
