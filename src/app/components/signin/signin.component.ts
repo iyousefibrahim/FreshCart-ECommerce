@@ -1,27 +1,32 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Route, Router } from '@angular/router';
 import { AlertErrorComponent } from '../../shared/ui components/alert-error/alert-error.component';
 import { loginValidator } from '../../shared/validators/login.validators';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss'
 })
 export class SigninComponent {
 
-  constructor(private _AuthService: AuthService, private _Router: Router) { }
+  private readonly _AuthService = inject(AuthService);
+  private readonly _Router = inject(Router);
+  private readonly _FormBuilder = inject(FormBuilder);
+
   isLoading: boolean = false;
   erroMsg: string = "";
   loginmsgSuccess: boolean = false;
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl(null, loginValidator.email),
-    password: new FormControl(null, loginValidator.password),
-  });
+
+  loginForm: FormGroup = this._FormBuilder.group({
+    email: [null, [loginValidator.email]],
+    password: [null, [loginValidator.password]],
+  })
 
   loginSubmit() {
     if (this.loginForm.valid) {

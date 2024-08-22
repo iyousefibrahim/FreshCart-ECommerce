@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories.service';
 import { Categories } from '../../core/interfaces/categories';
 
@@ -10,9 +10,9 @@ import { Categories } from '../../core/interfaces/categories';
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
-  constructor(private _CategoriesService: CategoriesService) { }
+  private readonly _CategoriesService = inject(CategoriesService);
 
-  allCategories : Categories[] = [];
+  allCategories: Categories[] = [];
   getAllCategories() {
     this._CategoriesService.getallCategories().subscribe({
       next: (res) => {

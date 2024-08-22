@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -17,20 +17,23 @@ import { signupValidator } from '../../shared/validators/register.validators';
 export class SignupComponent {
 
 
-  constructor(private _AuthService: AuthService, private _Router: Router) { }
+  private readonly _AuthService = inject(AuthService);
+  private readonly _Router = inject(Router);
+  private readonly _FormBuilder = inject(FormBuilder)
+
 
   buttonStatus: boolean = true;
   errorMsg: string = "";
   registermsgSuccess: boolean = false;
   isLoading: boolean = false;
 
-  registerForm: FormGroup = new FormGroup({
-    name: new FormControl(null,signupValidator.name),
-    email: new FormControl(null,signupValidator.email),
-    password: new FormControl(null, signupValidator.password),
-    rePassword: new FormControl(null),
-    phone: new FormControl(null, signupValidator.phone)
-  }, confirmPassword);
+  registerForm: FormGroup = this._FormBuilder.group({
+    name: [null, signupValidator.name],
+    email: [null, signupValidator.email],
+    password: [null, signupValidator.password],
+    rePassword: [null],
+    phone: [null, signupValidator.phone]
+  },{validators:[confirmPassword]})
 
   regsiterSubmit() {
 
@@ -48,6 +51,7 @@ export class SignupComponent {
         error: (err) => { this.errorMsg = err.error.message; this.isLoading = false; }
       });
     }
+    
 
   }
 

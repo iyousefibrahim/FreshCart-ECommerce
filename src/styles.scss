@@ -39,8 +39,15 @@ a:hover {
 .product:hover {
   box-shadow: var(--shadow);
   border: solid 1px var(--main-color);
-  padding: 10px;
   border-radius: 10px;
+  transition: 0.3s;
+}
+.product img {
+  transition: 0.3s;
+}
+
+.product:hover img {
+  transform: scale(0.9);
   transition: 0.3s;
 }
 .product .btn-main {

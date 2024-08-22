@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { products } from '../../core/interfaces/product';
 
@@ -10,7 +10,7 @@ import { products } from '../../core/interfaces/product';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
-  constructor(private _ProductsService: ProductsService) { }
+  private readonly _ProductsService = inject(ProductsService)
   allProducts: products[] = [];
   getProducts() {
     this._ProductsService.getProducts().subscribe({

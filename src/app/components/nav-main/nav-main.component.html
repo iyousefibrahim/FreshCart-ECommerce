@@ -58,7 +58,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/logout" routerLinkActive="navlink-active">Logout</a>
+          <a class="nav-link cursor-pointer" aria-current="page" (click)="_AuthService.signout()" routerLinkActive="navlink-active">Logout</a>
         </li>
       </ul>
     </div>

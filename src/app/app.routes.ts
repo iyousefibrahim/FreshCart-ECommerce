@@ -12,30 +12,31 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { loggedinGuard } from './core/guards/loggedin.guard';
 
 
 export const routes: Routes = [
     {
-        path: "", component: AuthLayoutComponent,
+        path: "", component: AuthLayoutComponent, canActivate: [loggedinGuard],
         children: [
             { path: "", redirectTo: "signin", pathMatch: "full" },
-            { path: "signin", component: SigninComponent ,title:"SignIn" },
-            { path: "signup", component: SignupComponent ,title:"SignUp" }
+            { path: "signin", component: SigninComponent, title: "SignIn" },
+            { path: "signup", component: SignupComponent, title: "SignUp" }
         ]
     },
     {
-        path: "", component: MainLayoutComponent , canActivate:[authGuard],
+        path: "", component: MainLayoutComponent, canActivate: [authGuard],
         children: [
             { path: "", redirectTo: "home", pathMatch: "full" },
-            { path: "home", component: HomeComponent,title:"Home" },
-            { path: "products", component: ProductsComponent ,title:"Products" },
-            { path: "categories", component: CategoriesComponent ,title:"Categories" },
-            { path: "brands", component: BrandsComponent ,title:"Brands" },
-            { path: "cart", component: CartComponent ,title:"Cart" },
-            { path: "orders", component: OrdersComponent ,title:"Orders" },
-            {path:"wishlist",component:WishlistComponent,title:"WishList" },
+            { path: "home", component: HomeComponent, title: "Home" },
+            { path: "products", component: ProductsComponent, title: "Products" },
+            { path: "categories", component: CategoriesComponent, title: "Categories" },
+            { path: "brands", component: BrandsComponent, title: "Brands" },
+            { path: "cart", component: CartComponent, title: "Cart" },
+            { path: "orders", component: OrdersComponent, title: "Orders" },
+            { path: "wishlist", component: WishlistComponent, title: "WishList" },
         ]
     },
-    { path: "**", component: NotFoundComponent ,title:"NotFound 404!" }
+    { path: "**", component: NotFoundComponent, title: "NotFound 404!" }
 
 ];

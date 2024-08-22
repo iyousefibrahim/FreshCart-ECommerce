@@ -8,8 +8,8 @@
                 <div class="col-md-12">
                     <label for="name" class="form-label">Name:</label>
                     <input [ngClass]="{
-                        'is-invalid': registerForm.get('name')?.errors && registerForm.get('name')?.touched,
-                        'is-valid': !registerForm.get('name')?.errors && registerForm.get('name')?.touched
+                        'is-invalid': registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty),
+                        'is-valid': !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
                     }" formControlName="name" type="text" class="form-control" id="name">
                     <app-alert-error [Form]="registerForm" FormControl="name"></app-alert-error>
                 </div>
@@ -17,8 +17,8 @@
                 <div class="col-md-12">
                     <label for="email" class="form-label">Email:</label>
                     <input [ngClass]="{
-                        'is-invalid': registerForm.get('email')?.errors && registerForm.get('email')?.touched,
-                        'is-valid': !registerForm.get('email')?.errors && registerForm.get('email')?.touched
+                        'is-invalid': registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty),
+                        'is-valid': !registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)
                     }" formControlName="email" type="email" class="form-control" id="email">
                     <app-alert-error [Form]="registerForm" FormControl="email"></app-alert-error>
                 </div>
@@ -26,8 +26,8 @@
                 <div class="col-md-12">
                     <label for="password" class="form-label">Password:</label>
                     <input [ngClass]="{
-                        'is-invalid': registerForm.get('password')?.errors && registerForm.get('password')?.touched,
-                        'is-valid': !registerForm.get('password')?.errors && registerForm.get('password')?.touched
+                        'is-invalid': registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty),
+                        'is-valid': !registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)
                     }" formControlName="password" type="password" class="form-control" id="password">
                     <app-alert-error [Form]="registerForm" FormControl="password"></app-alert-error>
                 </div>
@@ -44,8 +44,8 @@
                 <div class="col-md-12">
                     <label for="phone" class="form-label">Phone:</label>
                     <input [ngClass]="{
-                        'is-invalid': registerForm.get('phone')?.errors && registerForm.get('phone')?.touched,
-                        'is-valid': !registerForm.get('phone')?.errors && registerForm.get('phone')?.touched
+                        'is-invalid': registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty),
+                        'is-valid': !registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)
                     }" formControlName="phone" type="text" class="form-control" id="phone">
                     <app-alert-error [Form]="registerForm" FormControl="phone"></app-alert-error>
                 </div>

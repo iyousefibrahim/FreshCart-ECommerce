@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { baseUrl } from '../../environment/environment.local';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesService {
 
-  constructor(private _HttpClient: HttpClient) { }
+  private readonly _HttpClient = inject(HttpClient);
 
   getallCategories(): Observable<any> {
     return this._HttpClient.get(baseUrl + "/api/v1/categories");
