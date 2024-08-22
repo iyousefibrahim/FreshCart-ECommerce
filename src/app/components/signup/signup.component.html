@@ -52,9 +52,10 @@
 
             </div>
 
-            @if(errorMsg){
+            @if(errorMsg && registermsgSuccess === false){
                 <p class="alert alert-danger mt-3 m-0">{{errorMsg}}!</p>
             }
+
             @if(registermsgSuccess){
                 <p class="alert alert-success mt-3 m-0">Register Is Successful!</p>
             }

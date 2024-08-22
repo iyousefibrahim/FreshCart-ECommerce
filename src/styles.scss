@@ -35,6 +35,7 @@ a:hover {
 .product {
   transition: 0.3s;
   border: 0px solid transparent;
+  padding: 5px;
 }
 .product:hover {
   box-shadow: var(--shadow);

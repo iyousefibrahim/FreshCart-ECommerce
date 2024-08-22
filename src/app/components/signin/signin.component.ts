@@ -24,8 +24,8 @@ export class SigninComponent {
   loginmsgSuccess: boolean = false;
 
   loginForm: FormGroup = this._FormBuilder.group({
-    email: [null, [loginValidator.email]],
-    password: [null, [loginValidator.password]],
+    email: [null, loginValidator.email],
+    password: [null, loginValidator.password],
   })
 
   loginSubmit() {
@@ -35,7 +35,7 @@ export class SigninComponent {
       this._AuthService.loginForm(this.loginForm.value).subscribe({
 
         next: (res) => {
-          console.log(res), this.isLoading = false;
+          this.isLoading = false;
           this.loginmsgSuccess = true;
 
           // 1 - Save Token
@@ -44,12 +44,13 @@ export class SigninComponent {
           this._AuthService.saveuserData();
           // 3 - Navigate To Home
 
-          this._Router.navigate(['/home']);
+          setTimeout(() => {
+            this._Router.navigate(['/home']);
+          }, 2500);
 
 
         },
         error: (err) => {
-          console.log(err),
             this.erroMsg = err.error.message,
             this.isLoading = false;
         }
