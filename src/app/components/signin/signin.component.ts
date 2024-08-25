@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
-import { Route, Router } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
 import { AlertErrorComponent } from '../../shared/ui components/alert-error/alert-error.component';
 import { loginValidator } from '../../shared/validators/login.validators';
 import { NgClass } from '@angular/common';
@@ -9,7 +9,7 @@ import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass,RouterLink],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss'
 })

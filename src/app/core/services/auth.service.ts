@@ -13,6 +13,7 @@ export class AuthService {
   private readonly _Router = inject(Router);
   private readonly _HttpClient = inject(HttpClient);
   userData: any = null;
+
   setRegisterForm(data: object): Observable<any> {
     return this._HttpClient.post(baseUrl + '/api/v1/auth/signup', data);
   }
@@ -36,4 +37,18 @@ export class AuthService {
     this.userData = null;
     this._Router.navigate(["/signin"])
   }
+
+  forgotPassword(email: object): Observable<any> {
+    return this._HttpClient.post(baseUrl + "/api/v1/auth/forgotPasswords", email);
+  }
+
+  verifyResetCode(resetCode: object): Observable<any> {
+    return this._HttpClient.post(baseUrl + "/api/v1/auth/verifyResetCode", resetCode);
+  }
+
+  resetPassword(data: object): Observable<any> {
+    return this._HttpClient.put(baseUrl + "/api/v1/auth/resetPassword", data);
+  }
+
+  
 }

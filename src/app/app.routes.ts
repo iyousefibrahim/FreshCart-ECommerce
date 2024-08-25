@@ -13,6 +13,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { loggedinGuard } from './core/guards/loggedin.guard';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 
 
 export const routes: Routes = [
@@ -21,7 +22,8 @@ export const routes: Routes = [
         children: [
             { path: "", redirectTo: "signin", pathMatch: "full" },
             { path: "signin", component: SigninComponent, title: "SignIn" },
-            { path: "signup", component: SignupComponent, title: "SignUp" }
+            { path: "signup", component: SignupComponent, title: "SignUp" },
+            { path: "forgot", component: ForgotpasswordComponent, title: "Forgot Password" }
         ]
     },
     {
