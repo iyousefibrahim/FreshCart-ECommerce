@@ -51,8 +51,6 @@ export class SignupComponent {
         error: (err) => { this.errorMsg = err.error.message; this.isLoading = false; }
       });
     }
-    
-
   }
 
 

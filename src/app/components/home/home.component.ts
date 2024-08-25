@@ -1,11 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { products } from '../../core/interfaces/product';
+import { HomeCarouselComponent } from "../home-carousel/home-carousel.component";
+import { CategoriesCarouselComponent } from "../categories-carousel/categories-carousel.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [HomeCarouselComponent, CategoriesCarouselComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
