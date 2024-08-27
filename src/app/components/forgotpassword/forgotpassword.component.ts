@@ -5,7 +5,6 @@ import { AlertErrorComponent } from "../../shared/ui components/alert-error/aler
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { signupValidator } from '../../shared/validators/register.validators';
-import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -42,14 +41,13 @@ export class ForgotpasswordComponent {
         next: (res) => {
           this.isLoading = false;
           this.forgotmsgSuccess = true;
-          console.log(res);
           let emailvalue = this.forgotpasswordForm.get('email')?.value;
           this.resetPasswordForm.get('email')?.patchValue(emailvalue);
           this.steps = 2;
         },
         error: (err) => {
           this.errorMsg = err.error.message,
-            this.isLoading = false;
+          this.isLoading = false;
         }
       })
     }
@@ -69,12 +67,11 @@ export class ForgotpasswordComponent {
         next: (res) => {
           this.isLoading = false;
           this.verfifymsgSuccess = true;
-          console.log(res);
           this.steps = 3;
         },
         error: (err) => {
           this.errorMsg = err.error.message,
-            this.isLoading = false;
+          this.isLoading = false;
         }
       })
     }
@@ -95,7 +92,6 @@ export class ForgotpasswordComponent {
         next: (res) => {
           this.isLoading = false;
           this.resetmsgSuccess = true;
-          console.log(res);
           localStorage.setItem('userToken', res.token);
           setTimeout(() => {
             this._Router.navigate(["/home"]);

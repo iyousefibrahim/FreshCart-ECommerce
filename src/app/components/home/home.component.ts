@@ -3,11 +3,12 @@ import { ProductsService } from '../../core/services/products.service';
 import { products } from '../../core/interfaces/product';
 import { HomeCarouselComponent } from "../home-carousel/home-carousel.component";
 import { CategoriesCarouselComponent } from "../categories-carousel/categories-carousel.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HomeCarouselComponent, CategoriesCarouselComponent],
+  imports: [HomeCarouselComponent, CategoriesCarouselComponent,RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
