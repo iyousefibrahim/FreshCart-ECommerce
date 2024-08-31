@@ -32,7 +32,6 @@ export class SignupComponent {
     email: [null, signupValidator.email],
     password: [null, signupValidator.password],
     rePassword: [null],
-    phone: [null, signupValidator.phone]
   },{validators:[confirmPassword]})
 
   regsiterSubmit() {

@@ -1,1 +1,57 @@
-<p>address works!</p>
+<section class="my-5">
+    <div class="container">
+        <h2>Address:</h2>
+
+        <form [formGroup]="addressForm" (ngSubmit)="addressSubmit()">
+            <div class="row my-3 gy-2">
+
+                <div class="col-md-12">
+                    <label for="details" class="form-label">Details:</label>
+                    <input formControlName="details" type="details" class="form-control" id="details">
+                </div>
+
+                <div class="col-md-12">
+                    <label for="phone" class="form-label">Phone:</label>
+                    <input formControlName="phone" type="phone" class="form-control" id="phone">
+                    <app-alert-error [Form]="addressForm" FormControl="phone"></app-alert-error>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="city" class="form-label">City:</label>
+                    <input formControlName="city" type="city" class="form-control" id="city">
+                    <app-alert-error [Form]="addressForm" FormControl="city"></app-alert-error>
+                </div>
+
+
+
+            </div>
+
+            <div class="d-flex gap-2 ">
+                <div>
+                    <!-- <button (click)="payinCash()" [disabled]="isLoading || addressForm.invalid" class="btn-main">Pay In Cash
+                        @if(isLoading){
+
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        }
+                    </button> -->
+                </div>
+                <div>
+                <button (click)="paybyCard()" [disabled]="isLoading || addressForm.invalid" class="btn-main">Pay By Card
+                        @if(isLoading){
+
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        }
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+
+
+    </div>
+</section>

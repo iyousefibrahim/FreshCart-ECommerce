@@ -18,6 +18,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { AddressComponent } from './components/address/address.component';
 
 
+
 export const routes: Routes = [
     {
         path: "", component: AuthLayoutComponent, canActivate: [loggedinGuard],
@@ -37,10 +38,11 @@ export const routes: Routes = [
             { path: "categories", component: CategoriesComponent, title: "Categories" },
             { path: "brands", component: BrandsComponent, title: "Brands" },
             { path: "cart", component: CartComponent, title: "Cart" },
-            { path: "orders", component: OrdersComponent, title: "Orders" },
+            { path: "allorders", component: OrdersComponent, title: "Orders" },
             { path: "wishlist", component: WishlistComponent, title: "WishList" },
             { path: "productdetails/:id", component: ProductDetailsComponent, title: "Details" },
-            { path: "address/:id", component: AddressComponent, title: "Address" }
+            { path: "address/:id", component: AddressComponent, title: "Address" },
+
         ]
     },
     { path: "**", component: NotFoundComponent, title: "NotFound 404!" }

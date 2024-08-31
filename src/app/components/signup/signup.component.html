@@ -41,15 +41,6 @@
                     <app-alert-error [Form]="registerForm" FormControl="rePassword"></app-alert-error>
                 </div>
 
-                <div class="col-md-12">
-                    <label for="phone" class="form-label">Phone:</label>
-                    <input [ngClass]="{
-                        'is-invalid': registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty),
-                        'is-valid': !registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)
-                    }" formControlName="phone" type="text" class="form-control" id="phone">
-                    <app-alert-error [Form]="registerForm" FormControl="phone"></app-alert-error>
-                </div>
-
             </div>
 
             @if(errorMsg && registermsgSuccess === false){

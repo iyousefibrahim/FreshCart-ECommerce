@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private readonly _Router = inject(Router);
   private readonly _HttpClient = inject(HttpClient);
-  userData: any = null;
+  
 
   setRegisterForm(data: object): Observable<any> {
     return this._HttpClient.post(baseUrl + '/api/v1/auth/signup', data);
@@ -21,20 +21,21 @@ export class AuthService {
   loginForm(data: object): Observable<any> {
     return this._HttpClient.post(baseUrl + "/api/v1/auth/signin", data);
   }
+
   saveuserData(): void {
     if (localStorage.getItem('userToken') !== null) {
-      try{
-        this.userData = jwtDecode(localStorage.getItem('userToken')!);
+      try {
+        let userData = jwtDecode(localStorage.getItem('userToken')!);
+        localStorage.setItem('userData',JSON.stringify(userData));
       }
-      catch(error){
+      catch (error) {
         localStorage.clear();
       }
     }
   }
 
-  signout() :void {
-    localStorage.removeItem('userToken');
-    this.userData = null;
+  signout(): void {
+    localStorage.clear();
     this._Router.navigate(["/signin"])
   }
 
@@ -50,5 +51,5 @@ export class AuthService {
     return this._HttpClient.put(baseUrl + "/api/v1/auth/resetPassword", data);
   }
 
-  
+
 }

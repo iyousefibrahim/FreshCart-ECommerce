@@ -55,7 +55,7 @@
                     <h5 class="m-0 fw-bold">{{totalPrice}} EGP</h5>
                 </div>
                 <div class="controls d-flex flex-column gap-3 mt-5">
-                    <button class="btn btn-main text-white">Pay Now</button>
+                    <button [routerLink]="['/address',userCart.cartId]" class="btn btn-main text-white">Pay Now</button>
                     <button (click)="ClearUserCart()" class="btn btn-outline-danger">Clear Cart</button>
                 </div>
             </div>

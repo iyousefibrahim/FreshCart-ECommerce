@@ -8,7 +8,7 @@ import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withViewTransitions(), withHashLocation(), withInMemoryScrolling({ scrollPositionRestoration: "top" })),
+    provideRouter(routes, withViewTransitions(), withInMemoryScrolling({ scrollPositionRestoration: "top" })),
     provideHttpClient(),
     importProvidersFrom(BrowserAnimationsModule),
     provideToastr(),

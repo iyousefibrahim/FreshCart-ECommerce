@@ -45,6 +45,19 @@
         </li>
 
         <li class="nav-item">
+          <a class="nav-link position-relative" aria-current="page" routerLink="/allorders" routerLinkActive="navlink-active"
+            >Orders
+            <i class="fa-solid fa-truck"></i>
+            <span
+              class="position-absolute top-0 start-lg-100 translate-middle badge rounded-pill bg-danger"
+            >
+              5
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link position-relative" aria-current="page" routerLink="/cart" routerLinkActive="navlink-active"
             >Cart
             <i class="fa-solid fa-cart-shopping"></i>
@@ -56,6 +69,7 @@
             </span>
           </a>
         </li>
+        
 
         <li class="nav-item">
           <a class="nav-link cursor-pointer" aria-current="page" (click)="_AuthService.signout()" routerLinkActive="navlink-active">Logout</a>
