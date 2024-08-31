@@ -15,6 +15,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { loggedinGuard } from './core/guards/loggedin.guard';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { AddressComponent } from './components/address/address.component';
 
 
 export const routes: Routes = [
@@ -38,7 +39,8 @@ export const routes: Routes = [
             { path: "cart", component: CartComponent, title: "Cart" },
             { path: "orders", component: OrdersComponent, title: "Orders" },
             { path: "wishlist", component: WishlistComponent, title: "WishList" },
-            { path: "productdetails/:id", component: ProductDetailsComponent, title: "ProductDetails" }
+            { path: "productdetails/:id", component: ProductDetailsComponent, title: "Details" },
+            { path: "address/:id", component: AddressComponent, title: "Address" }
         ]
     },
     { path: "**", component: NotFoundComponent, title: "NotFound 404!" }

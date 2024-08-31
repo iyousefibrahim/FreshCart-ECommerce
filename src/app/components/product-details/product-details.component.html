@@ -3,18 +3,18 @@
         <div class="row">
 
                 <div class="col-md-3 ">
-                    <img class="w-100" [src]="product.imageCover" [alt]="product.title">
+                    <img class="w-100" [src]="product?.imageCover" [alt]="product?.title">
                 </div>
             
                 <div class="col-md-9 mt-5">
-                    <h3>{{product.title}}</h3>
-                    <p>{{product.description}}</p>
-                    <p>{{product.category.name}}</p>
+                    <h3>{{product?.title}}</h3>
+                    <p>{{product?.description}}</p>
+                    <p>{{product?.category?.name}}</p>
                     <div class="d-flex justify-content-between">
-                        <span>{{product.price}} EGP</span>
-                        <span><i class="fa-solid rating-color fa-star"></i> {{product.ratingsAverage}}</span>
+                        <span>{{product?.price}} EGP</span>
+                        <span><i class="fa-solid rating-color fa-star"></i> {{product?.ratingsAverage}}</span>
                     </div>
-                    <button class="btn-main w-100 mt-3">Add To Cart</button>
+                    <button (click)="AddProductToCart(product._id)" class="btn-main w-100 mt-3">Add To Cart</button>
 
                 </div>
             
