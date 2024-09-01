@@ -9,53 +9,32 @@ import { Observable } from 'rxjs';
 export class CartService {
 
   private readonly _HttpClient = inject(HttpClient);
-  
+
 
   AddProductToCart(productId: any): Observable<any> {
     return this._HttpClient.post(baseUrl + "/api/v1/cart",
       {
         productId: productId
-      },
-      {
-        headers: {
-          "token": localStorage.getItem('userToken')!,
-        }
       })
   }
 
   UpdateCartProductQTY(productID: string, count: number): Observable<any> {
-    return this._HttpClient.put(baseUrl + `/api/v1/cart/${productID}`, 
-    {
-      count: count
-    }, {
-      headers: {
-        "token": localStorage.getItem('userToken')!,
-      }
-    })
+    return this._HttpClient.put(baseUrl + `/api/v1/cart/${productID}`,
+      {
+        count: count
+      })
   }
 
   GetLoggedUserCart(): Observable<any> {
-    return this._HttpClient.get(baseUrl + `/api/v1/cart`, {
-      headers: {
-        "token": localStorage.getItem('userToken')!,
-      }
-    })
+    return this._HttpClient.get(baseUrl + `/api/v1/cart`)
   }
 
   RemoveSpecificCartItem(productID: string): Observable<any> {
-    return this._HttpClient.delete(baseUrl + `/api/v1/cart/${productID}`, {
-      headers: {
-        "token": localStorage.getItem('userToken')!,
-      }
-    })
+    return this._HttpClient.delete(baseUrl + `/api/v1/cart/${productID}`)
   }
 
   ClearUserCart(): Observable<any> {
-    return this._HttpClient.delete(baseUrl + `/api/v1/cart`, {
-      headers: {
-        "token": localStorage.getItem('userToken')!,
-      }
-    })
+    return this._HttpClient.delete(baseUrl + `/api/v1/cart`)
   }
 
 }

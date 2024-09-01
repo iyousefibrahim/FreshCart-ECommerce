@@ -4,11 +4,13 @@ import { products } from '../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { CurrencyPipe, NgClass } from '@angular/common';
+import { ProductStockPipe } from '../../core/pipes/product-stock.pipe';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,CurrencyPipe,ProductStockPipe,NgClass],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -30,7 +32,7 @@ export class ProductsComponent implements OnInit {
   AddProductToCart(product_id: any) {
     this._CartService.AddProductToCart(product_id).subscribe({
       next: (res) => {
-        this._ToastrService.success('Product added successfully to cart!', '', {
+        this._ToastrService.success('Product added successfully to your cart!', '', {
           progressBar: true,
           progressAnimation: 'increasing'
         });

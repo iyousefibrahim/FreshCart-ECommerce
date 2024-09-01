@@ -6,6 +6,7 @@ import { CategoriesCarouselComponent } from "../categories-carousel/categories-c
 import { RouterLink } from '@angular/router';
 import { ProductsComponent } from "../products/products.component";
 
+
 @Component({
   selector: 'app-home',
   standalone: true,

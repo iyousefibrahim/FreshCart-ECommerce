@@ -2,3 +2,22 @@
     width: 60px;
     height: 60px;
 }
+
+
+.quantity-btn {
+    border-radius: 50%;
+    background-color:var(--main-color);
+    padding: 5px 13px;
+    border-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+}
+.quantity-btn:hover {
+    background-color: rgba(57, 197, 57, 0.8);
+    transition: 0.3s;
+}
+
+.quantity-btn:disabled{
+    background-color: #ccc;
+}

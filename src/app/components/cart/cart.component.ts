@@ -15,7 +15,6 @@ import { Cart } from '../../core/interfaces/cart';
 export class CartComponent implements OnInit {
   private readonly _CartService = inject(CartService);
   private readonly _ToastrService = inject(ToastrService);
-  isLoading: boolean = true;
   userCart: Cart = {} as Cart;
   totalPrice!: any;
   totalItems!: any;
@@ -23,10 +22,9 @@ export class CartComponent implements OnInit {
   GetUserCart() {
     this._CartService.GetLoggedUserCart().subscribe({
       next: (res) => {
-        this.isLoading = false;
         this.userCart = res,
-        this.totalPrice = res.data.totalCartPrice,
-        this.totalItems = res.numOfCartItems
+          this.totalPrice = res.data.totalCartPrice,
+          this.totalItems = res.numOfCartItems
       },
     })
   }
@@ -34,7 +32,6 @@ export class CartComponent implements OnInit {
   ClearUserCart() {
     this._CartService.ClearUserCart().subscribe({
       next: (res) => {
-        console.log(res)
         this._ToastrService.success('The Cart has been cleard!', '', {
           progressBar: true
         })
@@ -46,7 +43,6 @@ export class CartComponent implements OnInit {
   RemoveSpecificCartItem(productID: string) {
     this._CartService.RemoveSpecificCartItem(productID).subscribe({
       next: (res) => {
-        console.log(res);
         this.GetUserCart();
         this._ToastrService.success('Item Removed From Cart!', '', {
           progressBar: true

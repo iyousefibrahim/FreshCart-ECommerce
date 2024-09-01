@@ -1,17 +1,16 @@
 <section class="my-5">
     <div class="container">
-        @if(!isLoading){
+        
         <div class="row shadow-lg">
-            <div class="col-md-8 bg-white p-4">
-                @if(totalItems !== 0){
-                <div
-                    class="info d-flex border-bottom pb-2 border-1 border-dark-subtle justify-content-between align-items-center">
+            <div class="col-lg-8 bg-white p-4">
+                @if(totalItems !== 0 && userCart.data ){
+                <div class="info d-flex border-bottom pb-2 border-1 border-dark-subtle justify-content-between align-items-center">
                     <h2>Shopping Cart</h2>
                     <h5>Items : {{totalItems}}</h5>
                 </div>
 
                 @for (item of userCart.data.products; track $index) {
-                <div id="cart-items" class="row gy-3 justify-content-between align-items-center">
+                <div id="cart-items" class="row my-3 gy-3 gy-md-0 justify-content-between align-items-center">
 
                     <div class="col-md-2">
                         <img class="w-100" [src]="item.product.imageCover" alt="{{item.product.title}}">
@@ -21,13 +20,13 @@
                         <p class="m-0">{{item.product.title}}</p>
                     </div>
 
-                    <div class="col-md-2 align-items-center d-flex flex-row gap-3">
+                    <div class="col-md-2 align-items-center justify-content-center d-flex flex-row gap-3">
                         <button (click)="UpdateCartProductQTY(item.product.id,item.count + 1)"
-                            class="btn  btn-outline-success">+</button>
+                            class="quantity-btn">+</button>
                         <h5 class="m-0">{{item.count}}</h5>
                         <button [disabled]="item.count == 1"
                             (click)="UpdateCartProductQTY(item.product.id,item.count - 1)"
-                            class="btn btn-outline-success">-</button>
+                            class="quantity-btn">-</button>
                     </div>
 
                     <div class="col-md-3 text-center">
@@ -48,7 +47,7 @@
                 }
             </div>
             @if (totalItems !== 0) {
-            <div class="col-md-4 bg-body-secondary p-4">
+            <div class="col-lg-4 bg-body-secondary p-4">
                 <h5 class="border-bottom pt-2 pb-4 border-1 border-dark-subtle">Summary</h5>
                 <div class="price-info d-flex justify-content-between pt-4">
                     <h5 class="m-0 fw-semibold">TOTAL PRICE</h5>
@@ -61,13 +60,5 @@
             </div>
             }
         </div>
-        }
-        @else {
-        <div class="d-flex justify-content-center">
-            <div class="spinner-border text-success my-5" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-        }
     </div>
 </section>
