@@ -6,20 +6,22 @@ import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { ProductStockPipe } from '../../core/pipes/product-stock.pipe';
+import { WishlistService } from '../../core/services/wishlist.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink,CurrencyPipe,ProductStockPipe,NgClass],
+  imports: [RouterLink, CurrencyPipe, ProductStockPipe, NgClass],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
   private readonly _ProductsService = inject(ProductsService);
   private readonly _CartService = inject(CartService);
+  private readonly _WishlistService = inject(WishlistService);
   private readonly _ToastrService = inject(ToastrService);
-
   allProducts: products[] = [];
+  ProductIds = new Set<string>();
 
   getProducts() {
     this._ProductsService.getProducts().subscribe({
@@ -40,9 +42,48 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  AddProductToWishList(productId: any) {
+    this._WishlistService.AddProductToWishlist(productId).subscribe({
+      next: (res) => {
+        this._ToastrService.success('Product added successfully to your WishList!', '', {
+          progressBar: true,
+          progressAnimation: 'increasing'
+        });
+        this.getProducts();
+        this.GetLoggedUserWishlist();
+      }
+    })
+  }
 
+  GetLoggedUserWishlist() {
+    this._WishlistService.GetLoggedUserWishlist().subscribe({
+      next: (res) => {
+
+        let newarr: [] = res.data;
+
+        newarr.forEach((item: any) => {
+          this.ProductIds.add(item._id);
+        });
+      }
+    });
+  }
+
+  RemoveProductFromWishList(productId: any) {
+    this._WishlistService.RemoveProductFromWishlist(productId).subscribe({
+      next: (res) => {
+        this._ToastrService.success('Product removed successfully from your WishList!', '', {
+          progressBar: true,
+          progressAnimation: 'increasing'
+        });
+        this.ProductIds.delete(productId);
+        this.getProducts();
+        this.GetLoggedUserWishlist();
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.getProducts();
+    this.GetLoggedUserWishlist();
   }
 }

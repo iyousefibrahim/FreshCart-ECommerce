@@ -1,1 +1,37 @@
-<p>wishlist works!</p>
+<section class="my-5">
+
+        @if(allWishList.count !== 0){
+            <div class="container shadow py-5 bg-body-secondary">
+            <div class="row gy-5">
+            
+                @for (item of allWishList.data; track $index) {
+                    <div class="col-md-2">
+                        <img class="w-100 rounded-2" [src]="item.imageCover" alt="{{item.title}}">
+                    </div>
+
+                    <div class="col-md-4 d-flex gap-2 justify-content-center align-items-start flex-column ">
+                        <p class="m-0">{{item.title}}</p>
+                        <p class="m-0 text-main fw-bold">{{item.price | currency:"GBP"}}</p>
+                        <i (click)="RemoveProductFromWishlist(item._id)" class="fa-solid text-danger cursor-pointer fa-trash"></i>
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-end align-items-center">
+                        <button (click)="AddProductToCart(item._id)" class="btn btn-main text-white me-4">Add To Cart</button>
+                    </div>
+
+            }
+        
+            </div>
+            </div>
+        }
+        @else {
+            <div class="container shadow">
+                <div class="p-5">
+                    <h2>Your WishList Is Empty!</h2>
+                    <button routerLink="/products" class="btn btn-main text-white my-4">Shop Now!</button>
+                </div>
+            </div>
+        }
+        
+    
+</section>

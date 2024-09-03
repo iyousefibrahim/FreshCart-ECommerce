@@ -5,6 +5,21 @@
             <div class="col-md-5 col-lg-3 cursor-pointer">
 
                 <div class="product h-100 p-3">
+                    
+                    @if (!ProductIds.has(product.id)) {
+                        <div class="text-end mb-2">
+                            <i (click)="AddProductToWishList(product._id)" class="fa-solid cursor-pointer fa-heart fs-3"></i>
+                        </div>
+                    }
+                    @else if (ProductIds.has(product.id)) {
+                        <div class="text-end">
+                            <i (click)="RemoveProductFromWishList(product._id)" class="fa-solid text-danger cursor-pointer fa-heart fs-3"></i>
+                        </div>
+                    }
+                    
+                    
+                      
+                    
                     <div [routerLink]="'/productdetails/'+ product._id">
                     <img class="w-100" [src]="product.imageCover" alt="Product Image">
                     <p class="m-0 text-start mt-3">{{product.category.name}}</p>

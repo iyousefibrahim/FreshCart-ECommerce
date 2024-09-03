@@ -18,20 +18,12 @@ export class WishlistService {
     return this._HttpClient.post(baseUrl + '/api/v1/wishlist',
       {
         productId: productId
-      }, {
-      headers: {
-        "token": localStorage.getItem('userToken')!,
       }
-    });
+    );
   }
 
   RemoveProductFromWishlist(productId: string): Observable<any> {
-    return this._HttpClient.delete(baseUrl + `/api/v1/wishlist/${productId}`,
-      {
-        headers: {
-          "token": localStorage.getItem('userToken')!,
-        }
-      });
+    return this._HttpClient.delete(baseUrl + `/api/v1/wishlist/${productId}`);
   }
 
 
