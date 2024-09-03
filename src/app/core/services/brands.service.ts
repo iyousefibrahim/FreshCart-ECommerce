@@ -8,9 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class BrandsService {
 
-   private readonly _HttpClient = inject(HttpClient);
+  private readonly _HttpClient = inject(HttpClient);
 
   getAllBrands(): Observable<any> {
     return this._HttpClient.get(baseUrl + '/api/v1/brands');
+  }
+
+  GetSpecificBrand(brandId: string): Observable<any> {
+    return this._HttpClient.get(baseUrl + `/api/v1/brands/${brandId}`);
   }
 }

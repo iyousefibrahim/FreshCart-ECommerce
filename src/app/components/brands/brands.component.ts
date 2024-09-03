@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BrandsService } from '../../core/services/brands.service';
 import { Brand } from '../../core/interfaces/product';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-brands',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })
@@ -17,9 +18,6 @@ export class BrandsComponent implements OnInit {
   getAllBrands() {
     this._BrandsService.getAllBrands().subscribe({
       next: (res) => { this.allBrands = res.data },
-      error: (err) => {
-        console.log(err);
-      }
     });
   }
 

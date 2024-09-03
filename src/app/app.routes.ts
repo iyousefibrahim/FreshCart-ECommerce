@@ -16,6 +16,8 @@ import { loggedinGuard } from './core/guards/loggedin.guard';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AddressComponent } from './components/address/address.component';
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
+import { BrandDetailsComponent } from './components/brand-details/brand-details.component';
 
 
 
@@ -42,6 +44,9 @@ export const routes: Routes = [
             { path: "wishlist", component: WishlistComponent, title: "WishList" },
             { path: "productdetails/:id", component: ProductDetailsComponent, title: "Details" },
             { path: "address/:id", component: AddressComponent, title: "Address" },
+            { path: "categorydetails/:id", component: CategoryDetailsComponent, title: "Category Details" },
+             { path: "branddetails/:id", component: BrandDetailsComponent, title: "Brand Details" },
+            
 
         ]
     },

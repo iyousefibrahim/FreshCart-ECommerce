@@ -13,4 +13,9 @@ export class CategoriesService {
   getallCategories(): Observable<any> {
     return this._HttpClient.get(baseUrl + "/api/v1/categories");
   }
+
+  GetSpecificCategory(categoryId: string): Observable<any> {
+    return this._HttpClient.get(baseUrl + `/api/v1/categories/${categoryId}`);
+  }
+
 }
