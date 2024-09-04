@@ -7,11 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { ProductStockPipe } from '../../core/pipes/product-stock.pipe';
 import { WishlistService } from '../../core/services/wishlist.service';
+import { SearchPipe } from '../../core/pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, ProductStockPipe, NgClass],
+  imports: [RouterLink, CurrencyPipe, ProductStockPipe, NgClass,SearchPipe,FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -22,6 +24,7 @@ export class ProductsComponent implements OnInit {
   private readonly _ToastrService = inject(ToastrService);
   allProducts: products[] = [];
   ProductIds = new Set<string>();
+  text : string = "";
 
   getProducts() {
     this._ProductsService.getProducts().subscribe({

@@ -17,18 +17,18 @@ export class OrdersComponent {
   private readonly _AuthService = inject(AuthService);
   isLoading : boolean = true;
   userData = JSON.parse(localStorage.getItem('userData')!);
-  userOrders!: Order[];
+  userOrders: Order[] = {} as Order[];
   uniqueUsers:any;
 
   extractUniqueUsers(): void {
     const userMap = new Map<string, User>();
 
-    this.userOrders.forEach(order => {
-      const userKey = `${order.user.email}`;
-      if (!userMap.has(userKey)) {
-        userMap.set(userKey, order.user);
-      }
-    });
+    // this.userOrders.forEach(order => {
+    //   const userKey = `${order.user.email}`;
+    //   if (!userMap.has(userKey)) {
+    //     userMap.set(userKey, order.user);
+    //   }
+    // });
 
     this.uniqueUsers = Array.from(userMap.values());
   }

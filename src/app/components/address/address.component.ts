@@ -29,7 +29,6 @@ export class AddressComponent {
   payinCash() {
     this._OrderService.CreateCashOrder(this.cartId, this.addressForm.value).subscribe({
       next: (res) => {
-        console.log(res),
         this.isLoading = false
       },
 

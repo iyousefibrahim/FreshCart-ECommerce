@@ -1,7 +1,11 @@
 <section class="my-5">
     <div class="container">
+        <div class="d-flex  flex-column align-items-center">
+        <h3 class="text-main">Search</h3>
+        <input [(ngModel)]="text" type="text" class="form-control w-75 mb-4" id="Search">
+        </div>
         <div class="row gy-4 gx-2">
-        @for (product of allProducts; track $index) {
+        @for (product of allProducts | search: text; track product._id) {
             <div class="col-md-5 col-lg-3 cursor-pointer">
 
                 <div class="product h-100 p-3">

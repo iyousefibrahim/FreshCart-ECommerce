@@ -27,25 +27,16 @@
             </div>
 
             <div class="d-flex gap-2 ">
+                
                 <div>
-                    <!-- <button (click)="payinCash()" [disabled]="isLoading || addressForm.invalid" class="btn-main">Pay In Cash
+                <button (click)="paybyCard()" [disabled]="isLoading || addressForm.invalid" class="btn-main">Pay
                         @if(isLoading){
 
                         <div class="spinner-border spinner-border-sm" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                         }
-                    </button> -->
-                </div>
-                <div>
-                <button (click)="paybyCard()" [disabled]="isLoading || addressForm.invalid" class="btn-main">Pay By Card
-                        @if(isLoading){
-
-                        <div class="spinner-border spinner-border-sm" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        }
-                    </button>
+                </button>
                 </div>
 
             </div>

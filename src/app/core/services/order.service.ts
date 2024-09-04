@@ -11,19 +11,14 @@ export class OrderService {
   private readonly _HttpClient = inject(HttpClient);
 
   CheckoutSession(cartId: string, shippingAddress: object): Observable<any> {
-    return this._HttpClient.post(baseUrl + `/api/v1/orders/checkout-session/${cartId}` + "?url=http://localhost:4200",
+    return this._HttpClient.post(baseUrl + `/api/v1/orders/checkout-session/${cartId}` + "?url=http://localhost:4200/home/",
       {
         shippingAddress
-      },
-      {
-        headers: {
-          "token": localStorage.getItem('userToken')!,
-        }
       });
   }
 
-  getUserOrders(userId : string) : Observable<any>{
-    return this._HttpClient.get(baseUrl+`/api/v1/orders/user/${userId}`);
+  getUserOrders(userId: string): Observable<any> {
+    return this._HttpClient.get(baseUrl + `/api/v1/orders/user/${userId}`);
   }
 
   CreateCashOrder(cartId: string, shippingAddress: object): Observable<any> {
@@ -37,5 +32,5 @@ export class OrderService {
         }
       });
   }
-  
+
 }
