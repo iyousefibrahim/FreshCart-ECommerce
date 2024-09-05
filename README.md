@@ -1,27 +1,42 @@
-# ECommerce
+# Fresh Cart
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+**Fresh Cart** is an e-commerce web application built using Angular 17 that allows users to browse, add to cart, and purchase various products. The project is designed with a focus on clean architecture, responsiveness, and performance. It includes features like authentication, product categories, carousels, a wishlist, payment functionality, and much more.
 
-## Development server
+## Table of Contents
+- [Demo](#demo)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Usage](#usage)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Demo
+Link to the live demo.
 
-## Code scaffolding
+## Features
+- **User Authentication**: Login, signup, and session management using JWT tokens.
+- **Product Browsing**: Browse products by category, add products to the cart, and wishlist functionality.
+- **Carousels**: Home and category-based carousels using `ngx-owl-carousel`.
+- **Cart Management**: Add and remove products from the cart, and display cart totals.
+- **Address Management**: Add, update, and delete addresses.
+- **Guards**: Page access guards to restrict users from signing up or signing in if already authenticated.
+- **Payment Gateway**: Seamless integration of a payment gateway to allow users to complete purchases securely.
+- **Responsive Design**: Fully responsive across different screen sizes.
+- **Toaster Notifications**: Feedback using `ngx-toaster` for actions like adding items to the cart.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
+- **Frontend Framework**: Angular 17
+- **Styling**: SCSS, responsive design with media queries
+- **Carousel**: `ngx-owl-carousel`
+- **Notifications**: `ngx-toaster`
+- **Dependency Injection**: Utilized `@Inject` decorator for services
+- **Form Handling**: Reactive forms with `FormBuilder` for signup and login
+- **API Integration**: Connected with backend APIs for products, wishlist, cart, and payment functionality.
+- **Routing**: Angular routing for navigation between different pages
+- **Guards**: Route protection for authenticated users
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Usage
+1. Sign up or log in with your account.
+2. Browse through the product categories.
+3. Add products to your cart or wishlist.
+4. Manage your cart and proceed to checkout.
+5. Complete your purchase via the integrated payment gateway.
+****
