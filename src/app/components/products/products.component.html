@@ -1,7 +1,7 @@
 <section class="my-5">
     <div class="container">
         <div class="d-flex flex-column align-items-center">
-        <h3 class="text-main">Search</h3>
+        <h3 class="text-main">{{"main-layout.products.search" | translate}}</h3>
         <input [(ngModel)]="text" type="text" class="form-control w-75 mb-4" id="Search">
         </div>
         <div class="row gy-4 gx-2">
@@ -37,7 +37,7 @@
                         'text-main': product.quantity > 0
                      }" class="m-0">{{product.quantity | productStock}}</p>
                     </div>
-                    <button (click)="AddProductToCart(product._id)" class="btn-main w-100 mt-3">Add To Cart <i class="fa-solid text-white fa-cart-shopping"></i></button>
+                    <button (click)="AddProductToCart(product._id)" class="btn-main w-100 mt-3">{{"main-layout.products.btn" | translate}} <i class="fa-solid text-white fa-cart-shopping"></i></button>
                 </div>
 
             </div>

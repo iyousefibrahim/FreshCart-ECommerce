@@ -1,0 +1,59 @@
+{
+    "main-layout":{
+        "main-navbar": 
+        {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "brands": "Brands",
+        "wishlist": "WishList",
+        "cart": "Cart",
+        "logout": "LogOut"
+        },
+        "products":{
+        "search":"Search Products",
+        "btn":"Add To Cart"
+        },
+        "product-details":{
+        "btn":"Add To Cart"
+        },
+        "wishlist":{
+            "empty":"Your WishList Is Empty!",
+            "shopnow":"Shop Now!",
+            "btn":"Add To Cart"
+        },
+        "cart":{
+            "title":"Shopping Cart",
+            "items":"Items:",
+            "summary":"Summary",
+            "totalprice":"TOTAL PRICE",
+            "cart-empty":"Your shopping cart is empty.",
+            "shop-now":"Shop Now!",
+            "paynow":"Pay Now",
+            "clearcart":"Clear Cart"
+        },
+        "footer":{
+        "title":"Get Fresh Cart App",
+        "description":"We will send you a link, open it on phone to download the app.",
+        "share-btn":"Share App Link",
+        "store-desc":"Get deliveries with FreshCart",
+        "payment-partners":"Payment Partners"
+        }
+    },
+    "auth-layout":{
+        "auth-nav":{
+            "login": "Login",
+            "register":"Register"
+        },
+        "login":{
+            "title": "Login Now :",
+            "forgetpassword":"Forgot Password?",
+            "login-btn":"Login"
+        },
+        "register":{
+            "title": "Register Now :",
+            "register-btn":"Register"
+        }
+    }
+    
+}

@@ -3,18 +3,24 @@ import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
 import { Cart } from '../../core/interfaces/cart';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/my-translate.service';
 
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,TranslateModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
   private readonly _CartService = inject(CartService);
   private readonly _ToastrService = inject(ToastrService);
+  private readonly  _MyTranslateService = inject(MyTranslateService);
+  readonly _TranslateService = inject(TranslateService);
+
+  
   userCart: Cart = {} as Cart;
   totalPrice!: any;
   totalItems!: any;
@@ -58,6 +64,10 @@ export class CartComponent implements OnInit {
         this.GetUserCart();
       }
     })
+  }
+
+  change(lang: string) {
+    this._MyTranslateService.changeLang(lang);
   }
   ngOnInit(): void {
     this.GetUserCart();

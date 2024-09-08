@@ -118,6 +118,7 @@ a:hover {
 ::-webkit-scrollbar-thumb {
   background-color: var(--main-color);
   border-radius: 15px;
+  height: 50px;
 }
 
 ::-webkit-scrollbar-track {
@@ -126,4 +127,6 @@ a:hover {
 
 ::-webkit-scrollbar {
   background-color: white;
+  width: 15px;
 }
+

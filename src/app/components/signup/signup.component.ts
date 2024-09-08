@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { AlertErrorComponent } from '../../shared/ui components/alert-error/alert-error.component';
 import { confirmPassword } from '../../shared/utils/confirm-password.utils';
 import { signupValidator } from '../../shared/validators/register.validators';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MyTranslateService } from '../../core/services/my-translate.service';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass,TranslateModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -19,8 +21,9 @@ export class SignupComponent {
 
   private readonly _AuthService = inject(AuthService);
   private readonly _Router = inject(Router);
-  private readonly _FormBuilder = inject(FormBuilder)
-
+  private readonly _FormBuilder = inject(FormBuilder);
+  private readonly  _MyTranslateService = inject(MyTranslateService);
+  readonly _TranslateService = inject(TranslateService);
 
   buttonStatus: boolean = true;
   errorMsg: string = "";
@@ -50,6 +53,10 @@ export class SignupComponent {
         error: (err) => { this.errorMsg = err.error.message; this.isLoading = false; }
       });
     }
+  }
+
+  change(lang: string) {
+    this._MyTranslateService.changeLang(lang);
   }
 
 

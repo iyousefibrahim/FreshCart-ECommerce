@@ -4,11 +4,13 @@ import { ProductsService } from '../../core/services/products.service';
 import { products } from '../../core/interfaces/product';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { MyTranslateService } from '../../core/services/my-translate.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -19,6 +21,10 @@ export class ProductDetailsComponent {
   private readonly _ProductsService = inject(ProductsService)
   private readonly _CartService = inject(CartService);
   private readonly _ToastrService = inject(ToastrService);
+  private readonly _MyTranslateService = inject(MyTranslateService);
+  readonly _TranslateService = inject(TranslateService);
+
+  
 
   AddProductToCart(product_id: any) {
     this._CartService.AddProductToCart(product_id).subscribe({
@@ -29,6 +35,10 @@ export class ProductDetailsComponent {
         });
       },
     })
+  }
+
+  change(lang: string) {
+    this._MyTranslateService.changeLang(lang);
   }
 
   ngOnInit(): void {

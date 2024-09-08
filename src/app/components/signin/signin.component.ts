@@ -5,11 +5,13 @@ import { Route, Router, RouterLink } from '@angular/router';
 import { AlertErrorComponent } from '../../shared/ui components/alert-error/alert-error.component';
 import { loginValidator } from '../../shared/validators/login.validators';
 import { NgClass } from '@angular/common';
+import { MyTranslateService } from '../../core/services/my-translate.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass,RouterLink],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass, RouterLink,TranslateModule],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss'
 })
@@ -18,6 +20,8 @@ export class SigninComponent {
   private readonly _AuthService = inject(AuthService);
   private readonly _Router = inject(Router);
   private readonly _FormBuilder = inject(FormBuilder);
+  private readonly _MyTranslateService = inject(MyTranslateService);
+  readonly _TranslateService = inject(TranslateService);
 
   isLoading: boolean = false;
   erroMsg: string = "";
@@ -51,11 +55,15 @@ export class SigninComponent {
 
         },
         error: (err) => {
-            this.erroMsg = err.error.message,
+          this.erroMsg = err.error.message,
             this.isLoading = false;
         }
       })
     }
+  }
+
+  change(lang: string) {
+    this._MyTranslateService.changeLang(lang);
   }
 
 

@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="col-md-6 d-flex justify-content-end align-items-center">
-                        <button (click)="AddProductToCart(item._id)" class="btn btn-main text-white me-4">Add To Cart</button>
+                        <button (click)="AddProductToCart(item._id)" class="btn btn-main text-white me-4">{{"main-layout.wishlist.btn" | translate}}</button>
                     </div>
 
             }
@@ -27,8 +27,8 @@
         @else {
             <div class="container shadow">
                 <div class="p-5">
-                    <h2>Your WishList Is Empty!</h2>
-                    <button routerLink="/products" class="btn btn-main text-white my-4">Shop Now!</button>
+                    <h2>{{"main-layout.wishlist.empty" | translate}}</h2>
+                    <button routerLink="/products" class="btn btn-main text-white my-4">{{"main-layout.wishlist.shopnow" | translate}}</button>
                 </div>
             </div>
         }

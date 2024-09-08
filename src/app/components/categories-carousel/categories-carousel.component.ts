@@ -18,6 +18,7 @@ export class CategoriesCarouselComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
+    rtl:true,
     touchDrag: true,
     autoplay:true,
     pullDrag: false,

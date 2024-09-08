@@ -1,0 +1,57 @@
+{
+    "main-layout":{
+        "main-navbar": {
+        "home": "الرئيسية",
+        "products": "المنتجات",
+        "categories": "الفئات",
+        "brands": "العلامات التجارية",
+        "wishlist": "قائمة المفضلة",
+        "cart": "عربة التسوق",
+        "logout": "تسجيل الخروج"
+        },
+        "products":{
+        "search":"البحث عن المنتجات",
+        "btn":"أضف للعربة"
+        },
+        "product-details":{
+        "btn":"أضف للعربة"
+        },
+        "wishlist":{
+            "empty":"قائمة المفضلة فارغة!",
+            "shopnow":"تسوق الأن!",
+            "btn":"أضف للعربة"
+        },
+        "cart":{
+            "title":"عربة التسوق",
+            "items":"عدد العناصر :",
+            "summary":"الملخص",
+            "totalprice":"المجموع",
+            "cart-empty":"عربة التسوق فارغة!",
+            "shop-now":"تسوق الأن!",
+            "paynow":"إدفع الأن",
+            "clearcart":"مسح جميع المنتجات"
+        },
+        "footer":{
+        "title":"احصل على برنامج FreshCart",
+        "description":"سنرسل لك رابطًا، افتحه على الهاتف لتنزيل التطبيق.",
+        "share-btn":"مشاركة رابط التطبيق",
+        "store-desc":"احصل على عمليات التوصيل مع FreshCart",
+        "payment-partners":"شركاء الدفع"
+        }
+    },
+    "auth-layout":{
+        "auth-nav":{
+            "login": "تسجيل الدخول",
+            "register": "إنشاء حساب جديد"
+        },
+        "login":{
+            "title": "تسجيل الدخول :",
+            "forgetpassword":"هل نسيت كلمة السر؟",
+            "login-btn":"تسجيل الدخول"
+        },"register":{
+            "title": "إنشاء حساب جديد :",
+            "register-btn":"إنشاء حساب"
+        }
+    }
+    
+}

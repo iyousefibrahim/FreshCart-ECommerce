@@ -14,24 +14,33 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse d-flex justify-content-end navbar-collapse" id="navbarNav">
      
-
-      <ul class="ms-auto navbar-nav gap-2 mt-3 mt-lg-0 text-center text-lg-start">
+      <ul class=" navbar-nav gap-2 mt-3 mt-lg-0 text-center text-lg-start">
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-language fs-3"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li [class.bg-main] ="_TranslateService.currentLang === 'en'" (click)="change('en')"><a class="dropdown-item" [class.text-white] ="_TranslateService.currentLang === 'en'" href="#">EN</a></li>
+            <li [class.bg-main] ="_TranslateService.currentLang === 'ar'" (click)="change('ar')"><a class="dropdown-item" [class.text-white] ="_TranslateService.currentLang === 'ar'" href="#">AR</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link position-relative" aria-current="page" routerLink="/signin" routerLinkActive="navlink-active"
-            >Login
+            >{{"auth-layout.auth-nav.login" | translate}}
           </a>
         </li>
 
          <li class="nav-item">
           <a class="nav-link position-relative" aria-current="page" routerLink="/signup" routerLinkActive="navlink-active"
-            >Register
+            >{{"auth-layout.auth-nav.register" | translate}}
           </a>
         </li>
 
         
       </ul>
+
     </div>
   </div>
 </nav>

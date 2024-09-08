@@ -15,6 +15,7 @@ export class HomeCarouselComponent {
     autoplay:true,
     mouseDrag: true,
     touchDrag: true,
+    rtl:true,
     pullDrag: false,
     dots: false,
     nav: true,
