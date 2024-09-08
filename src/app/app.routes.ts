@@ -10,7 +10,6 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { BrandsComponent } from './components/brands/brands.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CartComponent } from './components/cart/cart.component';
-import { OrdersComponent } from './components/orders/orders.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { loggedinGuard } from './core/guards/loggedin.guard';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
@@ -40,7 +39,6 @@ export const routes: Routes = [
             { path: "categories", component: CategoriesComponent, title: "Categories" },
             { path: "brands", component: BrandsComponent, title: "Brands" },
             { path: "cart", component: CartComponent, title: "Cart" },
-            { path: "allorders", component: OrdersComponent, title: "Orders" },
             { path: "wishlist", component: WishlistComponent, title: "WishList" },
             { path: "productdetails/:id", component: ProductDetailsComponent, title: "Details" },
             { path: "address/:id", component: AddressComponent, title: "Address" },
