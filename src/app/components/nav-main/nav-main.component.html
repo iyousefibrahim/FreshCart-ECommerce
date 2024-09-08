@@ -42,16 +42,18 @@
           </ul>
       </li>
 
-        <li class="nav-item">
+        <li class="nav-item me-2">
           <a class="nav-link position-relative" aria-current="page" routerLink="/wishlist" routerLinkActive="navlink-active"
             >{{"main-layout.main-navbar.wishlist" | translate}}
             <i class="fa-regular fa-heart"></i>
-            <span
+            @if (wishlistCount!==0) {
+              <span
               class="position-absolute start-0 top-0 translate-middle badge rounded-pill bg-danger"
             >
-              5
+              {{wishlistCount}}
               <span class="visually-hidden">unread messages</span>
             </span>
+            }
           </a>
         </li>
 
@@ -59,12 +61,14 @@
           <a class="nav-link position-relative" aria-current="page" routerLink="/cart" routerLinkActive="navlink-active"
             >{{"main-layout.main-navbar.cart" | translate}}
             <i class="fa-solid fa-cart-shopping"></i>
-            <span
+            @if (cartCount !== 0) {
+              <span
               class="position-absolute start-0 top-0 translate-middle badge rounded-pill bg-danger"
             >
-              5
+              {{cartCount}}
               <span class="visually-hidden">unread messages</span>
             </span>
+            }
           </a>
         </li>
         

@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
   AddProductToCart(product_id: any) {
     this._CartService.AddProductToCart(product_id).subscribe({
       next: (res) => {
+        this._CartService.cartNumber.next(res.numOfCartItems);
         this._ToastrService.success('Product added successfully to your cart!', '', {
           progressBar: true,
           progressAnimation: 'increasing'
@@ -53,6 +54,7 @@ export class ProductsComponent implements OnInit {
   AddProductToWishList(productId: any) {
     this._WishlistService.AddProductToWishlist(productId).subscribe({
       next: (res) => {
+        this._WishlistService.wishlistNumber.next(res.data.length);  
         this._ToastrService.success('Product added successfully to your WishList!', '', {
           progressBar: true,
           progressAnimation: 'increasing'
@@ -79,13 +81,15 @@ export class ProductsComponent implements OnInit {
   RemoveProductFromWishList(productId: any) {
     this._WishlistService.RemoveProductFromWishlist(productId).subscribe({
       next: (res) => {
+        this.getProducts();
+        this.GetLoggedUserWishlist();
+        this._WishlistService.wishlistNumber.next(res.data.length);  
         this._ToastrService.success('Product removed successfully from your WishList!', '', {
           progressBar: true,
           progressAnimation: 'increasing'
         });
         this.ProductIds.delete(productId);
-        this.getProducts();
-        this.GetLoggedUserWishlist();
+        
       }
     })
   }

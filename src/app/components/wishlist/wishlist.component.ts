@@ -22,13 +22,14 @@ export class WishlistComponent {
   private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
 
-
+  wishlistCount : number = 0;
   allWishList: WishList = {} as WishList;
 
   GetLoggedUserWishlist() {
     this._WishlistService.GetLoggedUserWishlist().subscribe({
       next: (res) => {
         this.allWishList = res;
+        this._WishlistService.wishlistNumber.next(res.count);
       }
     })
   }
@@ -36,8 +37,8 @@ export class WishlistComponent {
   RemoveProductFromWishlist(productId: string) {
     this._WishlistService.RemoveProductFromWishlist(productId).subscribe({
       next: (res) => {
-        console.log(res);
         this.GetLoggedUserWishlist();
+        this._WishlistService.wishlistNumber.next(res.data.length);
         this._ToastrService.success('Product remove successfully from your WishList!', '', {
           progressBar: true,
           progressAnimation: 'increasing'
@@ -49,6 +50,7 @@ export class WishlistComponent {
   AddProductToCart(productId: string) {
     this._CartService.AddProductToCart(productId).subscribe({
       next: (res) => {
+        this._CartService.cartNumber.next(res.numOfCartItems);
         this._ToastrService.success('Product added successfully to your cart!', '', {
           progressBar: true,
           progressAnimation: 'increasing'

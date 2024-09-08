@@ -10,17 +10,17 @@ import { MyTranslateService } from '../../core/services/my-translate.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [RouterLink,TranslateModule],
+  imports: [RouterLink, TranslateModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
   private readonly _CartService = inject(CartService);
   private readonly _ToastrService = inject(ToastrService);
-  private readonly  _MyTranslateService = inject(MyTranslateService);
+  private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
 
-  
+
   userCart: Cart = {} as Cart;
   totalPrice!: any;
   totalItems!: any;
@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
   ClearUserCart() {
     this._CartService.ClearUserCart().subscribe({
       next: (res) => {
+        this._CartService.cartNumber.next(0);
         this._ToastrService.success('The Cart has been cleard!', '', {
           progressBar: true
         })
@@ -50,6 +51,7 @@ export class CartComponent implements OnInit {
     this._CartService.RemoveSpecificCartItem(productID).subscribe({
       next: (res) => {
         this.GetUserCart();
+        this._CartService.cartNumber.next(res.numOfCartItems);
         this._ToastrService.success('Item Removed From Cart!', '', {
           progressBar: true
         })

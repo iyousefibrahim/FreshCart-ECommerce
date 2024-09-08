@@ -29,6 +29,7 @@ export class ProductDetailsComponent {
   AddProductToCart(product_id: any) {
     this._CartService.AddProductToCart(product_id).subscribe({
       next: (res) => {
+        this._CartService.cartNumber.next(res.numOfCartItems);
         this._ToastrService.success('Product added successfully to cart!', '', {
           progressBar: true,
           progressAnimation: 'increasing'
