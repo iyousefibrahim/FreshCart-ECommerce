@@ -4,6 +4,7 @@ import { OrderService } from '../../core/services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { signupValidator } from '../../shared/validators/register.validators';
 import { AlertErrorComponent } from "../../shared/ui components/alert-error/alert-error.component";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-address',
@@ -18,6 +19,9 @@ export class AddressComponent {
   private readonly _ActivatedRoute = inject(ActivatedRoute);
   cartId!: string;
   isLoading: boolean = false;
+  CreateCashOrderSub! :Subscription;
+  CheckoutSessionSub! :Subscription;
+  _ActivatedRoutesub!: Subscription;
 
   addressForm: FormGroup = this._FormBuilder.group({
     details: [null],
@@ -27,7 +31,7 @@ export class AddressComponent {
 
 
   payinCash() {
-    this._OrderService.CreateCashOrder(this.cartId, this.addressForm.value).subscribe({
+    this.CreateCashOrderSub = this._OrderService.CreateCashOrder(this.cartId, this.addressForm.value).subscribe({
       next: (res) => {
         this.isLoading = false
       },
@@ -54,11 +58,16 @@ export class AddressComponent {
   }
 
   ngOnInit(): void {
-    this._ActivatedRoute.paramMap.subscribe({
+    this._ActivatedRoutesub = this._ActivatedRoute.paramMap.subscribe({
       next: (params) => {
         this.cartId = params.get('id')!;
       },
     })
+  }
 
+  ngOnDestroy(): void {
+    this.CreateCashOrderSub?.unsubscribe();
+    this.CheckoutSessionSub?.unsubscribe();
+    this._ActivatedRoutesub?.unsubscribe();
   }
 }

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BrandsService } from '../../core/services/brands.service';
 import { ActivatedRoute } from '@angular/router';
 import { Brand } from '../../core/interfaces/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-brand-details',
@@ -15,6 +16,7 @@ export class BrandDetailsComponent {
   private readonly _ActivatedRoute = inject(ActivatedRoute);
   brandId!: string;
   brandData: Brand = {} as Brand;
+  GetSpecificBrandSub! :Subscription;
 
   GetSpecificBrand(brandId: string) {
     this._BrandsService.GetSpecificBrand(brandId).subscribe({
@@ -23,6 +25,7 @@ export class BrandDetailsComponent {
       }
     })
   }
+
   ngOnInit(): void {
 
     this._ActivatedRoute.paramMap.subscribe({
@@ -32,6 +35,10 @@ export class BrandDetailsComponent {
     })
     
     this.GetSpecificBrand(this.brandId);
+  }
+
+  ngOnDestroy(): void {
+    this.GetSpecificBrandSub?.unsubscribe();
   }
 
 }

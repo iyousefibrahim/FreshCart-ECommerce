@@ -6,13 +6,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-nav-auth',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive,TranslateModule],
+  imports: [RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './nav-auth.component.html',
   styleUrl: './nav-auth.component.scss'
 })
 export class NavAuthComponent {
 
-  private readonly  _MyTranslateService = inject(MyTranslateService);
+  private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
 
   change(lang: string) {

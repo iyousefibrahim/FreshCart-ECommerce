@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoriesService } from '../../core/services/categories.service';
 import { Categories } from '../../core/interfaces/categories';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories-carousel',
@@ -13,14 +14,15 @@ import { Categories } from '../../core/interfaces/categories';
 export class CategoriesCarouselComponent implements OnInit {
 
   private readonly _CategoriesService = inject(CategoriesService);
-  allCategories : Categories[] = [];
+  allCategories: Categories[] = [];
+  getallCategoriesSub!: Subscription;
 
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
-    rtl:true,
+    rtl: true,
     touchDrag: true,
-    autoplay:true,
+    autoplay: true,
     pullDrag: false,
     dots: false,
     nav: false,
@@ -40,13 +42,16 @@ export class CategoriesCarouselComponent implements OnInit {
         items: 6
       }
     },
-    
+
   }
 
   ngOnInit(): void {
-    this._CategoriesService.getallCategories().subscribe({
-      next:(res) => {this.allCategories = res.data}
+    this.getallCategoriesSub = this._CategoriesService.getallCategories().subscribe({
+      next: (res) => { this.allCategories = res.data }
     })
   }
-  
+  ngOnDestroy(): void {
+    this.getallCategoriesSub?.unsubscribe();
+  }
+
 }

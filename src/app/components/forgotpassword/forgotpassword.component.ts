@@ -5,6 +5,7 @@ import { AlertErrorComponent } from "../../shared/ui components/alert-error/aler
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { signupValidator } from '../../shared/validators/register.validators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -24,6 +25,9 @@ export class ForgotpasswordComponent {
   verfifymsgSuccess: boolean = false;
   forgotmsgSuccess: boolean = false;
   resetmsgSuccess: boolean = false;
+  forgotPasswordSub!:Subscription;
+  verifyResetCodeSub!:Subscription;
+  resetPasswordSub!:Subscription;
 
   steps: number = 1;
 
@@ -36,7 +40,7 @@ export class ForgotpasswordComponent {
     if (this.forgotpasswordForm.valid) {
 
       this.isLoading = true;
-      this._AuthService.forgotPassword(this.forgotpasswordForm.value).subscribe({
+      this.forgotPasswordSub = this._AuthService.forgotPassword(this.forgotpasswordForm.value).subscribe({
 
         next: (res) => {
           this.isLoading = false;
@@ -62,7 +66,7 @@ export class ForgotpasswordComponent {
     if (this.verifycodeForm.valid) {
 
       this.isLoading = true;
-      this._AuthService.verifyResetCode(this.verifycodeForm.value).subscribe({
+      this.verifyResetCodeSub = this._AuthService.verifyResetCode(this.verifycodeForm.value).subscribe({
 
         next: (res) => {
           this.isLoading = false;
@@ -87,7 +91,7 @@ export class ForgotpasswordComponent {
     if (this.resetPasswordForm.valid) {
 
       this.isLoading = true;
-      this._AuthService.resetPassword(this.resetPasswordForm.value).subscribe({
+      this.resetPasswordSub = this._AuthService.resetPassword(this.resetPasswordForm.value).subscribe({
 
         next: (res) => {
           this.isLoading = false;
@@ -106,7 +110,13 @@ export class ForgotpasswordComponent {
   }
 
 
-
+  ngOnDestroy(): void {
+   
+   this.forgotPasswordSub?.unsubscribe();
+   this.verifyResetCodeSub?.unsubscribe();
+   this.resetPasswordSub?.unsubscribe();
+    
+  }
 
 
 }

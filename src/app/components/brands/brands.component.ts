@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { BrandsService } from '../../core/services/brands.service';
 import { Brand } from '../../core/interfaces/product';
 import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-brands',
@@ -13,6 +14,7 @@ import { RouterLink } from '@angular/router';
 export class BrandsComponent implements OnInit {
 
   private readonly _BrandsService = inject(BrandsService);
+  GetAllBrandSub!:Subscription;
 
   allBrands: Brand[] = [];
   getAllBrands() {
@@ -23,5 +25,8 @@ export class BrandsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBrands();
+  }
+  ngOnDestroy(): void {
+    this.GetAllBrandSub?.unsubscribe();
   }
 }

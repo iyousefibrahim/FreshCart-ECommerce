@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories.service';
 import { Categories } from '../../core/interfaces/categories';
 import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories',
@@ -12,6 +13,7 @@ import { RouterLink } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   private readonly _CategoriesService = inject(CategoriesService);
+  getallCategoriesSub!: Subscription;
 
   allCategories: Categories[] = [];
   getAllCategories() {
@@ -26,7 +28,9 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.getAllCategories();
+  }
+  ngOnDestroy(): void {
+    this.getallCategoriesSub?.unsubscribe();
   }
 }

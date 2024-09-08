@@ -1,11 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../core/services/products.service';
-import { products } from '../../core/interfaces/product';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { MyTranslateService } from '../../core/services/my-translate.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
@@ -14,28 +14,31 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
   productID!: any;
   product!: any;
+
   private readonly _ActivatedRoute = inject(ActivatedRoute);
-  private readonly _ProductsService = inject(ProductsService)
+  private readonly _ProductsService = inject(ProductsService);
   private readonly _CartService = inject(CartService);
   private readonly _ToastrService = inject(ToastrService);
   private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
 
-  
+  private activatedRouteSub!: Subscription;
+  private productSub!: Subscription;
+  private addProductToCartSub!: Subscription;
 
   AddProductToCart(product_id: any) {
-    this._CartService.AddProductToCart(product_id).subscribe({
+    this.addProductToCartSub = this._CartService.AddProductToCart(product_id).subscribe({
       next: (res) => {
         this._CartService.cartNumber.next(res.numOfCartItems);
         this._ToastrService.success('Product added successfully to cart!', '', {
           progressBar: true,
-          progressAnimation: 'increasing'
+          progressAnimation: 'increasing',
         });
       },
-    })
+    });
   }
 
   change(lang: string) {
@@ -43,17 +46,20 @@ export class ProductDetailsComponent {
   }
 
   ngOnInit(): void {
-
-    this._ActivatedRoute.paramMap.subscribe({
+    this.activatedRouteSub = this._ActivatedRoute.paramMap.subscribe({
       next: (res) => {
         this.productID = res.get('id');
-      }
+      },
     });
 
-    this._ProductsService.getProduct(this.productID).subscribe({
-      next: (res) => this.product = res.data,
-
+    this.productSub = this._ProductsService.getProduct(this.productID).subscribe({
+      next: (res) => (this.product = res.data),
     });
   }
 
+  ngOnDestroy(): void {
+    this.activatedRouteSub?.unsubscribe();
+    this.productSub?.unsubscribe();
+    this.addProductToCartSub?.unsubscribe();
+  }
 }

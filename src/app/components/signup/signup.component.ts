@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -8,21 +8,21 @@ import { confirmPassword } from '../../shared/utils/confirm-password.utils';
 import { signupValidator } from '../../shared/validators/register.validators';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/my-translate.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass,TranslateModule],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass, TranslateModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
-export class SignupComponent {
-
+export class SignupComponent implements OnDestroy {
 
   private readonly _AuthService = inject(AuthService);
   private readonly _Router = inject(Router);
   private readonly _FormBuilder = inject(FormBuilder);
-  private readonly  _MyTranslateService = inject(MyTranslateService);
+  private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
 
   buttonStatus: boolean = true;
@@ -30,27 +30,32 @@ export class SignupComponent {
   registermsgSuccess: boolean = false;
   isLoading: boolean = false;
 
+  private registerSubscription!: Subscription;
+
   registerForm: FormGroup = this._FormBuilder.group({
     name: [null, signupValidator.name],
     email: [null, signupValidator.email],
     password: [null, signupValidator.password],
     rePassword: [null],
-  },{validators:[confirmPassword]})
+  }, { validators: [confirmPassword] });
 
-  regsiterSubmit() {
-
+  registerSubmit() {
     if (this.registerForm.valid) {
       this.isLoading = true;
-      this._AuthService.setRegisterForm(this.registerForm.value).subscribe({
+
+      this.registerSubscription = this._AuthService.setRegisterForm(this.registerForm.value).subscribe({
         next: (res) => {
           this.isLoading = false;
           this.registermsgSuccess = true;
+
           setTimeout(() => {
             this._Router.navigate(['/signin']);
           }, 2500);
-
         },
-        error: (err) => { this.errorMsg = err.error.message; this.isLoading = false; }
+        error: (err) => {
+          this.errorMsg = err.error.message;
+          this.isLoading = false;
+        }
       });
     }
   }
@@ -59,6 +64,7 @@ export class SignupComponent {
     this._MyTranslateService.changeLang(lang);
   }
 
-
-
+  ngOnDestroy(): void {
+    this.registerSubscription?.unsubscribe();
+  }
 }

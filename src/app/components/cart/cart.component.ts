@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { Cart } from '../../core/interfaces/cart';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/my-translate.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -20,10 +21,15 @@ export class CartComponent implements OnInit {
   private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
 
-
   userCart: Cart = {} as Cart;
   totalPrice!: any;
   totalItems!: any;
+  GetLoggedUserCartSub! : Subscription;
+  ClearUserCartSub! : Subscription;
+  RemoveSpecificSub! : Subscription;
+  UpdateCartProductSub! : Subscription;
+  
+  
 
   GetUserCart() {
     this._CartService.GetLoggedUserCart().subscribe({
@@ -73,5 +79,12 @@ export class CartComponent implements OnInit {
   }
   ngOnInit(): void {
     this.GetUserCart();
+  }
+
+  ngOnDestroy(): void {
+    this.GetLoggedUserCartSub?.unsubscribe();
+    this.ClearUserCartSub?.unsubscribe();
+    this.RemoveSpecificSub?.unsubscribe();
+    this.UpdateCartProductSub?.unsubscribe();
   }
 }

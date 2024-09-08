@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories.service';
 import { ActivatedRoute } from '@angular/router';
 import { Categories } from '../../core/interfaces/categories';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-category-details',
@@ -15,6 +16,9 @@ export class CategoryDetailsComponent {
   private readonly _ActivatedRoute = inject(ActivatedRoute);
   categoryId!: string;
   categoryData: Categories = {} as Categories;
+  GetSpecificCategorySub!: Subscription;
+  _ActivatedRouteSub!: Subscription;
+
 
   GetSpecificCategory(categoryId: string) {
     this._CategoriesService.GetSpecificCategory(categoryId).subscribe({
@@ -25,11 +29,16 @@ export class CategoryDetailsComponent {
   }
 
   ngOnInit(): void {
-    this._ActivatedRoute.paramMap.subscribe({
+    this._ActivatedRouteSub = this._ActivatedRoute.paramMap.subscribe({
       next: (res) => {
         this.categoryId = res.get('id')!;
       }
     })
     this.GetSpecificCategory(this.categoryId);
+  }
+
+  ngOnDestroy(): void {
+    this.GetSpecificCategorySub?.unsubscribe();
+    this._ActivatedRouteSub?.unsubscribe();
   }
 }
