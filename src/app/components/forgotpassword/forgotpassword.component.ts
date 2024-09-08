@@ -6,11 +6,13 @@ import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { signupValidator } from '../../shared/validators/register.validators';
 import { Subscription } from 'rxjs';
+import { MyTranslateService } from '../../core/services/my-translate.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forgotpassword',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, AlertErrorComponent],
+  imports: [ReactiveFormsModule, NgClass, AlertErrorComponent,TranslateModule],
   templateUrl: './forgotpassword.component.html',
   styleUrl: './forgotpassword.component.scss'
 })
@@ -19,6 +21,8 @@ export class ForgotpasswordComponent {
   private readonly _AuthService = inject(AuthService);
   private readonly _Router = inject(Router);
   private readonly _FormBuilder = inject(FormBuilder);
+  private readonly _MyTranslateService = inject(MyTranslateService);
+  readonly _TranslateService = inject(TranslateService);
 
   isLoading: boolean = false;
   errorMsg: string = "";
@@ -109,6 +113,9 @@ export class ForgotpasswordComponent {
     }
   }
 
+   change(lang: string) {
+    this._MyTranslateService.changeLang(lang);
+  }
 
   ngOnDestroy(): void {
    

@@ -1,6 +1,6 @@
 <section class="my-5">
     <div class="container">
-        <h2>Address:</h2>
+        <h2>{{"main-layout.address.title" |translate}}</h2>
 
         <form [formGroup]="addressForm" (ngSubmit)="addressSubmit()">
             <div class="row my-3 gy-2">
@@ -29,7 +29,7 @@
             <div class="d-flex gap-2 ">
                 
                 <div>
-                <button (click)="paybyCard()" [disabled]="isLoading || addressForm.invalid" class="btn-main">Pay
+                <button (click)="paybyCard()" [disabled]="isLoading || addressForm.invalid" class="btn-main">{{"main-layout.address.pay-btn" |translate}}
                         @if(isLoading){
 
                         <div class="spinner-border spinner-border-sm" role="status">

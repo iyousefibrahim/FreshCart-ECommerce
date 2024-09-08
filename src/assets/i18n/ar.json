@@ -31,6 +31,10 @@
             "paynow":"إدفع الأن",
             "clearcart":"مسح جميع المنتجات"
         },
+        "address":{
+            "title":"العنوان:",
+            "pay-btn":"إدفع"
+        },
         "footer":{
         "title":"احصل على برنامج FreshCart",
         "description":"سنرسل لك رابطًا، افتحه على الهاتف لتنزيل التطبيق.",
@@ -48,9 +52,18 @@
             "title": "تسجيل الدخول :",
             "forgetpassword":"هل نسيت كلمة السر؟",
             "login-btn":"تسجيل الدخول"
-        },"register":{
+        },
+        "register":{
             "title": "إنشاء حساب جديد :",
             "register-btn":"إنشاء حساب"
+        },
+        "forgetpassword":{
+            "title":"إعادة تعيين كلمة السر:",
+            "reset-btn":"إعادة التعيين",
+            "enter-otp":"من فضلك أدخل الOTP",
+            "code-sent":"تم إرسال الرمز إلى:",
+            "confirm-btn":"تأكيد الرمز",
+            "enter-pass":"كلمة السر الجديدة:"
         }
     }
     

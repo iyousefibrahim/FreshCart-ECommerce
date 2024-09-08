@@ -32,6 +32,10 @@
             "paynow":"Pay Now",
             "clearcart":"Clear Cart"
         },
+        "address":{
+        "title":"Address",
+        "pay-btn":"Pay"
+        },
         "footer":{
         "title":"Get Fresh Cart App",
         "description":"We will send you a link, open it on phone to download the app.",
@@ -53,6 +57,14 @@
         "register":{
             "title": "Register Now :",
             "register-btn":"Register"
+        },
+        "forgetpassword":{
+            "title":"Forgot Password:",
+            "reset-btn":"Reset",
+            "enter-otp":"Please enter the OTP",
+            "code-sent":"A code has been sent to:",
+            "confirm-btn":"Verfiy Code",
+            "enter-pass":"Enter New Password:"
         }
     }
     

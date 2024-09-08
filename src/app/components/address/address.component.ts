@@ -5,11 +5,13 @@ import { ActivatedRoute } from '@angular/router';
 import { signupValidator } from '../../shared/validators/register.validators';
 import { AlertErrorComponent } from "../../shared/ui components/alert-error/alert-error.component";
 import { Subscription } from 'rxjs';
+import { MyTranslateService } from '../../core/services/my-translate.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-address',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent],
+  imports: [ReactiveFormsModule, AlertErrorComponent,TranslateModule],
   templateUrl: './address.component.html',
   styleUrl: './address.component.scss'
 })
@@ -17,6 +19,10 @@ export class AddressComponent {
   private readonly _FormBuilder = inject(FormBuilder);
   private readonly _OrderService = inject(OrderService);
   private readonly _ActivatedRoute = inject(ActivatedRoute);
+  private readonly _MyTranslateService = inject(MyTranslateService);
+  readonly _TranslateService = inject(TranslateService);
+
+  
   cartId!: string;
   isLoading: boolean = false;
   CreateCashOrderSub! :Subscription;
@@ -55,6 +61,10 @@ export class AddressComponent {
     if (this.addressForm.valid) {
       this.isLoading = true;
     }
+  }
+
+  change(lang: string) {
+    this._MyTranslateService.changeLang(lang);
   }
 
   ngOnInit(): void {
