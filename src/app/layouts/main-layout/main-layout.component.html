@@ -1,2 +1,5 @@
 <app-nav-main></app-nav-main>
 <router-outlet></router-outlet>
+@if (upbtn) {
+    <button (click)="scrolltoTop()" class="up-btn"><i class="fa-solid fa-up-long"></i></button>
+}

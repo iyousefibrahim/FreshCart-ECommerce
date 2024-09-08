@@ -1,0 +1,12 @@
+.up-btn {
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 50%;
+    border-color: transparent;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 50;
+    transition: 0.3s;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavMainComponent } from "../../components/nav-main/nav-main.component";
 
@@ -11,4 +11,17 @@ import { NavMainComponent } from "../../components/nav-main/nav-main.component";
 })
 export class MainLayoutComponent {
 
+  upbtn: boolean = false;
+
+  scrolltoTop() {
+    window.scrollTo({ top: 0 });
+  }
+
+  @HostListener('window:scroll') ScrollTop() {
+    if (window.scrollY > 300) {
+      this.upbtn = true;
+    } else {
+      this.upbtn = false;
+    }
+  }
 }

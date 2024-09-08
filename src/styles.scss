@@ -24,12 +24,15 @@
 body {
   font-family: var(--font-family) !important;
 }
+
 .rating-color {
   color: var(--rating-color);
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
+
 a,
 a:hover {
   color: black;
@@ -41,12 +44,14 @@ a:hover {
   border: 0px solid transparent;
   padding: 5px;
 }
+
 .product:hover {
   box-shadow: var(--shadow);
   border: solid 1px var(--main-color);
   border-radius: 10px;
   transition: 0.3s;
 }
+
 .product img {
   transition: 0.3s;
 }
@@ -55,11 +60,13 @@ a:hover {
   transform: scale(0.9);
   transition: 0.3s;
 }
+
 .product .btn-main {
   transition: transform 1s, opacity 1s;
   transform: translateY(100%);
   opacity: 0;
 }
+
 .product:hover .btn-main {
   opacity: 1;
   transform: translateY(0%);
@@ -68,12 +75,15 @@ a:hover {
 .font-sm {
   font-size: 14px;
 }
+
 .text-main {
   color: var(--main-color);
 }
+
 .bg-main {
   background-color: var(--main-color) !important;
 }
+
 .bg-main-light {
   background-color: var(--light-color) !important;
 }
@@ -91,13 +101,29 @@ a:hover {
   cursor: pointer;
   transition: background-color 0.5s;
 }
+
 .btn-main:disabled {
   cursor: not-allowed;
   background-color: #ccc;
 }
+
 .btn-main:disabled:hover {
   background-color: #ccc;
 }
+
 .btn-main:hover {
   background-color: #11bd11;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ddd;
+}
+
+::-webkit-scrollbar {
+  background-color: white;
 }
