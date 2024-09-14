@@ -31,6 +31,7 @@ export class NavMainComponent implements OnInit, OnDestroy {
 
   change(lang: string) {
     this._MyTranslateService.changeLang(lang);
+    localStorage.setItem('lang',lang);
   }
 
   ngOnInit(): void {
