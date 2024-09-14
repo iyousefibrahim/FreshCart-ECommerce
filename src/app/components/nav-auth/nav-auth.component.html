@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul [ngClass]="{
         'me-auto' : _TranslateService.currentLang === 'ar',
-        'ms-auto' : _TranslateService.currentLang === 'en',
+        'ms-auto' : _TranslateService.currentLang === 'en' || locallang === null,
       }" class="navbar-nav text-center gap-2 mt-3 mt-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

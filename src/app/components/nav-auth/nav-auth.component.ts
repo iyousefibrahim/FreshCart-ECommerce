@@ -15,9 +15,11 @@ export class NavAuthComponent {
 
   private readonly _MyTranslateService = inject(MyTranslateService);
   readonly _TranslateService = inject(TranslateService);
+  locallang = localStorage.getItem('lang');
 
   change(lang: string) {
     this._MyTranslateService.changeLang(lang);
   }
+
 
 }
