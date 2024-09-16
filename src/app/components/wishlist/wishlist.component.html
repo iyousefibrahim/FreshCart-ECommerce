@@ -1,7 +1,7 @@
-<section class="my-5">
+<section class="my-5 pt-5">
 
         @if(allWishList.count !== 0){
-            <div class="container shadow py-5 bg-body-secondary">
+            <div class="container shadow py-5 bg-body-secondary mt-3">
             <div class="row gy-5">
             
                 @for (item of allWishList.data; track $index) {
@@ -25,7 +25,7 @@
             </div>
         }
         @else {
-            <div class="container shadow">
+            <div class="container shadow mt-3">
                 <div class="p-5">
                     <h2>{{"main-layout.wishlist.empty" | translate}}</h2>
                     <button routerLink="/products" class="btn btn-main text-white my-4">{{"main-layout.wishlist.shopnow" | translate}}</button>
